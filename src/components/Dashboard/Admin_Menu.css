@@ -1,0 +1,76 @@
+.admin_nav_container {
+    background: rgb(255, 255, 255);
+    width: 25%;
+    height: 100%;
+    position: fixed;
+    z-index: 100;
+    cursor: pointer;
+    overflow: scroll;
+}
+
+.admin_menu_header {
+    background: white;
+    width: 100%;
+    border-color: black;
+    border-style: solid;
+    border-width: 0px 0px 2px 0px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.close_button {
+    background: white;
+    width: 10%;
+    font-size: 25px;
+    border-style: none;
+    padding-left: 20px;
+    cursor: pointer;
+}
+
+.admin_nav_link {
+    height: 50px;
+    border-style: solid;
+    border-width: 0px 0px 2px 0px;
+    font-size: 30px;
+    font-weight: bold;   
+    padding-left: 20px; 
+    display: flex;
+    align-items: center;
+}
+
+.show {
+    transform: translateX(0%);
+    transition: .35s ease-in-out;
+    visibility: visible;
+}
+
+.hide {
+    transform: translateX(-100%);
+    transition: .35s ease-in-out;
+    visibility: hidden;
+}
+
+/* SUB MENUS */
+
+.home_sub {
+    height: 50px;
+    width: 100%;
+    background: lightgray;
+    color: black;
+    border-bottom: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .show_sub {
+    transform: translateY(0%);
+    transition: .35s ease-in-out;
+    visibility: visible;
+  }
+
+  .hide_sub {
+    transform: translateY(-100%);
+    transition: .35s ease-in-out;
+    display: none;
+  }
