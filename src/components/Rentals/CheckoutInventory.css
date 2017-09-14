@@ -1,0 +1,11 @@
+.inventory_checkout_main {
+    display: flex;
+    flex-direction: column;
+}
+
+.rental_info {
+    /* background: yellow; */
+    height: 50%;
+    width: 100%;
+    z-index: 100;
+}

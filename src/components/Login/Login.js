@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Login.css';
-import logo from '../../assets/logo.jpg';
+import logo from '../../assets/FUTSRArtboard 1.png';
 
 export default class Login extends Component {
     render() {

@@ -1,5 +1,5 @@
 CREATE TABLE users (
-id SERIAL PRIMARY KEY,
+user_id SERIAL PRIMARY KEY,
 username VARCHAR(180),
 email VARCHAR(180),
 img TEXT,

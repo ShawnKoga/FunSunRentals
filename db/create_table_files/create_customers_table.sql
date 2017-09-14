@@ -1,5 +1,5 @@
 CREATE TABLE customers (
-id SERIAL PRIMARY KEY,
+customer_id SERIAL PRIMARY KEY,
 firstname VARCHAR(180),
 lastname VARCHAR(180),
 email VARCHAR(180),
