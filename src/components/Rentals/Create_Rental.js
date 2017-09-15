@@ -19,6 +19,8 @@ export default class Create_Rental extends Component {
             endDate: null,
             pbCount: 0,
             kayakCount: 0,
+            roofRackCount: 0,
+            lifeJacketCount: 0,
             newRentalID: null,
 
             //INVENTORY TOGGLES
@@ -51,6 +53,16 @@ export default class Create_Rental extends Component {
     updateKayakCount(num) {
         this.setState({
             kayakCount: num
+        })
+    }
+    updateRoofRackCount(num) {
+        this.setState({
+            roofRackCount: num
+        })
+    }
+    updateLifeJacketCount(num) {
+        this.setState({
+            lifeJacketCount: num
         })
     }
     createRental(obj) {
@@ -92,6 +104,8 @@ export default class Create_Rental extends Component {
                         End Date: <input type="date" onChange={(e) => this.updateEndDate(e.target.value)} />
                         Paddleboards: <input type="number" min="0" onChange={(e) => this.updatePBCount(e.target.value)} />
                         Kayaks: <input type="number" min="0" onChange={(e) => this.updateKayakCount(e.target.value)} />
+                        Roof Racks: <input type="number" min="0" onChange={(e) => this.updateRoofRackCount(e.target.value)} />
+                        Life Jackets: <input type="number" min="0" onChange={(e) => this.updateLifeJacketCount(e.target.value)} />
                         {/* <button onClick={() => this.toggleInvMenu() }>Checkout Inventory</button> */}
                         <button onClick={() => {this.createRental(this.state)}}>Create Rental</button>
                         <Link to="/dashboard"><button>Cancel</button></Link>

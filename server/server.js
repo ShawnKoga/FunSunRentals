@@ -26,6 +26,8 @@ app.get('/inventory/get_kayaks_avail', controller.getAvailKayaks)
 
 //RENTAL ENDPOINTS
 app.get('/rentals/get_active_count', controller.getActiveRentals)
+app.get('/rentals/get_upcoming_due', controller.getUpcomingDue)
+app.get('/rentals/get_past_due', controller.getPastDue)
 app.get('/rentals/get_rental/:id', controller.getRentalInfo)
 app.post('/rentals/create_new_rental', controller.createNewRental)
 app.put('/rentals/confirm_checkout', controller.assignInventory)

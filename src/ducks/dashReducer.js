@@ -15,6 +15,10 @@ const GET_AVAIL_PB = "GET_AVAIL_PB";
 const GET_AVAIL_PB_FULFILLED = "GET_AVAIL_PB_FULFILLED";
 const GET_AVAIL_KAYAKS = "GET_AVAIL_KAYAKS";
 const GET_AVAIL_KAYAKS_FULFILLED = "GET_AVAIL_KAYAKS_FULFILLED";
+const GET_UPCOMING_DUE = "GET_UPCOMING_DUE";
+const GET_UPCOMING_DUE_FULFILLED = "GET_UPCOMING_DUE_FULFILLED";
+const GET_PAST_DUE = "GET_PAST_DUE";
+const GET_PAST_DUE_FULFILLED = "GET_PAST_DUE_FULFILLED";
 
 //REDUCER
 export default function dashReducer(state = initialState, action) {
@@ -28,6 +32,12 @@ export default function dashReducer(state = initialState, action) {
         case GET_AVAIL_KAYAKS_FULFILLED:
             return Object.assign({}, state, { currentAvailKayaks: action.payload })
 
+        case GET_UPCOMING_DUE_FULFILLED:
+            return Object.assign({}, state, { upcomingDueRentals: action.payload })
+
+        case GET_PAST_DUE_FULFILLED:
+            return Object.assign({}, state, { pastDueRentals: action.payload })
+            
         default:
             return state
     }
@@ -52,5 +62,19 @@ export function getAvailKayaks() {
     return {
         type: GET_AVAIL_KAYAKS,
         payload: dashboardService.getAvailKayaks()
+    }
+}
+
+export function getUpcomingDue() {
+    return {
+        type: GET_UPCOMING_DUE,
+        payload: dashboardService.upcomingDueRentals()
+    }
+}
+
+export function getPastDue() {
+    return {
+        type: GET_PAST_DUE,
+        payload: dashboardService.pastDueRentals()
     }
 }

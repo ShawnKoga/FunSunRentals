@@ -22,6 +22,14 @@ module.exports = {
         .then(num => res.status(200).send(num))
         .catch(err => {res.status(500).send()})
     },
+    
+    assignInventory: (req, res) => {
+        const dbInstance = req.app.get('db');
+        const {customer_id, rentalID, paddleboards, kayaks, roofracks, lifejackets} = req.body;
+        dbInstance.rentals.assignInventory(customer_id, rentalID, paddleboards, kayaks, roofracks, lifejackets)
+        .then(res.status(200).send('INVENTORY ASSIGNED'))
+        .catch(err => {res.status(500).send()})
+    },
 
     //RENTALS
     getActiveRentals: (req, res) => {
@@ -31,10 +39,31 @@ module.exports = {
         .catch(err => {res.status(500).send()})        
     },
 
+    getUpcomingDue: (req, res) => {
+        const dbInstance = req.app.get('db');
+        dbInstance.rentals.getUpcomingDue()
+        .then(num => res.status(200).send(num))
+        .catch(err => {res.status(500).send()})        
+    },
+
+    getPastDue: (req, res) => {
+        const dbInstance = req.app.get('db');
+        dbInstance.rentals.getPastDue()
+        .then(num => res.status(200).send(num))
+        .catch(err => {res.status(500).send()})        
+    },
+
+    getUpcomingDue: (req, res) => {
+        const dbInstance = req.app.get('db');
+        dbInstance.rentals.getUpcomingDue()
+        .then(num => res.status(200).send(num))
+        .catch(err => {res.status(500).send()})        
+    },
+
     createNewRental: (req, res) => {
         const dbInstance = req.app.get('db');
-        const {customerID, startDate, endDate, pbCount, kayakCount} = req.body;
-        dbInstance.rentals.createRental(customerID, startDate, endDate, pbCount, kayakCount)
+        const {customerID, startDate, endDate, pbCount, kayakCount, roofRackCount, lifeJacketCount} = req.body;
+        dbInstance.rentals.createRental(customerID, startDate, endDate, pbCount, kayakCount, roofRackCount, lifeJacketCount)
         .then(rental => res.status(200).send(rental))
         .catch(err => {res.status(500).send()})
     },
@@ -46,13 +75,6 @@ module.exports = {
         .catch(err => {res.status(500).send()})
     },
 
-    assignInventory: (req, res) => {
-        const dbInstance = req.app.get('db');
-        const {customer_id, rentalID, paddleboards, kayaks} = req.body;
-        dbInstance.rentals.assignInventory(customer_id, rentalID, paddleboards, kayaks)
-        .then(res.status(200).send('INVENTORY ASSIGNED'))
-        .catch(err => {res.status(500).send()})
-    },
 
     closeRental: (req, res) => {
         const dbInstance = req.app.get('db');

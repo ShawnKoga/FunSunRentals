@@ -14,7 +14,9 @@ export default class CheckoutInventory extends Component {
             rentalID: null,
             rentalDisplay: [],
             paddleboards: 0,
-            kayaks: 0
+            kayaks: 0,
+            roofracks: 0,
+            lifejackets: 0
         }
     }
 
@@ -31,7 +33,9 @@ export default class CheckoutInventory extends Component {
                     rentalDisplay: res.data,
                     customer_id: res.data[0].customer_id,
                     paddleboards: res.data[0].paddleboards,
-                    kayaks: res.data[0].kayaks
+                    kayaks: res.data[0].kayaks,
+                    roofracks: res.data[0].roofracks,
+                    lifejackets: res.data[0].lifejackets
                 })
             })
     }
@@ -56,6 +60,8 @@ export default class CheckoutInventory extends Component {
                     <div>Due: {end}</div>
                     <div>Paddleboards: {c.paddleboards}</div>
                     <div>Kayaks: {c.kayaks}</div>
+                    <div>Roof Racks: {c.roofracks}</div>
+                    <div>Life Jackets: {c.lifejackets}</div>
                     <button onClick={() => this.confirmCheckout(this.state)}>Confirm Inventory Checkout</button>
                     <Link to="/dashboard"><button>Done</button></Link>
                 </div>

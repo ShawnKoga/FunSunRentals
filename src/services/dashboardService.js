@@ -22,3 +22,17 @@ export function getAvailKayaks() {
             return res.data[0].count
         })
 }
+
+export function upcomingDueRentals() {
+    return axios.get(`${url}/rentals/get_upcoming_due`)
+        .then(res => {
+            return (res.data[0].count)
+        })
+}
+
+export function pastDueRentals() {
+    return axios.get(`${url}/rentals/get_past_due`)
+    .then(res => {
+        return (res.data[0].count)
+    })
+}

@@ -5,7 +5,7 @@ import AdminMenu from './Admin_Menu';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getActiveRentalCount, getAvailPB, getAvailKayaks } from '../../ducks/dashReducer';
+import { getActiveRentalCount, getAvailPB, getAvailKayaks, getUpcomingDue, getPastDue } from '../../ducks/dashReducer';
 
 import './Dashboard.css';
 import './Admin_Menu.css';
@@ -54,10 +54,11 @@ class Dashboard extends Component {
         this.props.getActiveRentalCount();
         this.props.getAvailPB();
         this.props.getAvailKayaks();
+        this.props.getPastDue();
+        this.props.getUpcomingDue();
     }
 
     render() {
-
         BigCalendar.momentLocalizer(moment);
 
         var myEventsList = [];
@@ -89,12 +90,26 @@ class Dashboard extends Component {
                         <div className="quick_guide_container">
                             <div className="quick_guide_component">
                                 <h2>QuickStats</h2>
-                                {/* <button onClick={() => {this.props.getActiveRentalCount()}}>Get Stats</button> */}
-                                <div>Active Rentals: {this.props.activeRentalCount}</div>
-                                <div>Current Avail. PB: {this.props.currentAvailPB}</div>
-                                <div>Current Avail. Kayaks: {this.props.currentAvailKayaks}</div>
-                                <div>Rentals Past Due: {this.props.pastDueRentals}</div>
-                                <div>Upcoming Due Rentals: {this.props.upcomingDueRentals}</div>
+
+                                <div>Active Rentals: {this.props.activeRentalCount}
+                                    <button>Details</button>
+                                </div>
+
+                                <div>Avail. PB: {this.props.currentAvailPB}
+                                    <button>Details</button>
+                                </div>
+
+                                <div>Avail. Kayaks: {this.props.currentAvailKayaks}
+                                    <button>Details</button>
+                                </div>
+
+                                <div>Rentals Past Due: {this.props.pastDueRentals}
+                                    <button>Details</button>
+                                </div>
+                                
+                                <div>Upcoming Due: {this.props.upcomingDueRentals}
+                                    <button>Details</button>
+                                </div>
                             </div>
 
                             <div className="quick_guide_component">
@@ -126,4 +141,4 @@ function mapStateToProps(state) {
     return state.dashboard
 }
 
-export default connect(mapStateToProps, {getActiveRentalCount, getAvailPB, getAvailKayaks})(Dashboard)
+export default connect(mapStateToProps, { getActiveRentalCount, getAvailPB, getAvailKayaks, getUpcomingDue, getPastDue })(Dashboard)

@@ -14,6 +14,22 @@ WHERE kayak_id IN
 FROM kayaks WHERE rental_id IS null
 LIMIT $4);
 
+UPDATE roofracks
+SET customer_id = $1,
+    rental_id = $2
+WHERE rack_id IN
+(SELECT rack_id
+FROM roofracks WHERE rental_id IS null
+LIMIT $5);
+
+UPDATE lifejackets
+SET customer_id = $1,
+    rental_id = $2
+WHERE jacket_id IN
+(SELECT jacket_id
+FROM lifejackets WHERE rental_id IS null
+LIMIT $6);
+
 UPDATE rentals
 SET status = 'OPEN'
-WHERE rental_id = $2;
+WHERE rental_id = $2 AND status = 'PENDING';

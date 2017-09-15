@@ -5,5 +5,7 @@ start_date DATE,
 end_date DATE,
 paddleboards INTEGER,
 kayaks INTEGER,
+roofracks INTEGER,
+lifejackets INTEGER,
 status VARCHAR(80)
 );
