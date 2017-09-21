@@ -71,15 +71,6 @@ h1 {
     align-items: center;
 }
 
-.calendar {
-    background-color: rgba(255, 255, 255, 0.70);
-    width: 60%;
-    height: 70%;
-    padding: 20px;
-    border-radius: 10px;
-    /* margin-right: 40px; */
-}
-
 .quick_guide_container {
     /* background-color: red; */
     width: 20%;
@@ -100,13 +91,58 @@ h1 {
     border-radius: 10px;
 }
 
+.calendar {
+    background-color: rgba(255, 255, 255, 0.70);
+    width: 60%;
+    height: 70%;
+    padding: 20px;
+    border-radius: 10px;
+    /* margin-right: 40px; */
+}
+
+.rental_quick_view_container {
+    background-color: rgba(255, 255, 255, 0.70);
+    width: 60%;
+    height: 70%;
+    padding: 20px;
+    border-radius: 10px;
+    overflow: scroll;
+    /* display: flex; */
+    /* justify-content: center; */
+}
+
+/* .rental_quick_view_carousel{
+    background-color: rgba(255, 255, 255, 0.70);
+    width: 60%;
+    height: 70%;
+    padding: 20px;
+    border-radius: 10px;
+    overflow: scroll;
+} */
+
+.open_rental_card {
+    background: lightskyblue;
+    width: 60%;
+    height: 20%;
+    margin-bottom: 15px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+}
+
+/* .quick_close_button {
+    width: 30%;
+    height: 30%;
+} */
+
 /* MEDIA QUERIES */
 @media(min-width:700px) {
-
+    
 }
 
 @media(min-width:1000px) {
-
+    
 }
 
 @media(min-width:1300px) {

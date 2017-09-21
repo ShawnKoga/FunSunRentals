@@ -24,8 +24,8 @@ export default class CloseRental extends Component {
 
     closeRental(val) {
         if (this.state.rentalID !== null) {
-            axios.put(url + `/rentals/close_rental`, val)
-                .then(res => alert(res.data))
+            axios.put(`${url}/rentals/close_rental`, val)
+                .then(res => alert("Order closed!"))
         } else {
             alert("Please specify a rental number!")
         }

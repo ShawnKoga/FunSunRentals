@@ -1,3 +1,4 @@
+
 UPDATE paddleboards
 SET customer_id = $1,
     rental_id = $2
@@ -29,6 +30,7 @@ WHERE jacket_id IN
 (SELECT jacket_id
 FROM lifejackets WHERE rental_id IS null
 LIMIT $6);
+
 
 UPDATE rentals
 SET status = 'OPEN'

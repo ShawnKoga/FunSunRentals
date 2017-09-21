@@ -13,6 +13,7 @@ export default class Admin_Menu extends Component {
                 <div className={this.props.showRentTools ? 'show_sub' : 'hide_sub'}>
                     <Link className="home_sub" to="/new_rental">CREATE NEW</Link>
                     <Link className="home_sub" to="/close_rental">CLOSE RENTAL</Link>
+                    <Link className="home_sub" to="/checkout_inventory">MANUAL INVENTORY CHECKOUT</Link>
                     <li className="home_sub">BY CUSTOMER</li>
                     <li className="home_sub">BY DATE</li>
                     <li className="home_sub">ALL RENTALS</li>

@@ -5,7 +5,7 @@ let url = 'http://localhost:8080';
 export function getActiveRentalCount() {
     return axios.get(`${url}/rentals/get_active_count`)
         .then(res => {
-            return res.data[0].count
+            return res.data
         })
 }
 
@@ -23,6 +23,20 @@ export function getAvailKayaks() {
         })
 }
 
+export function getAvailLifeJackets() {
+    return axios.get(`${url}/inventory/get_lj_avail`)
+        .then(res => {
+            return res.data[0].count
+        })
+}
+
+export function getAvailRoofRacks() {
+    return axios.get(`${url}/inventory/get_rr_avail`)
+        .then(res => {
+            return res.data[0].count
+        })
+}
+
 export function upcomingDueRentals() {
     return axios.get(`${url}/rentals/get_upcoming_due`)
         .then(res => {
@@ -34,5 +48,12 @@ export function pastDueRentals() {
     return axios.get(`${url}/rentals/get_past_due`)
     .then(res => {
         return (res.data[0].count)
+    })
+}
+
+export function quickClose(id) {
+    return axios.put(`${url}/rentals/close_rental`, id)
+    .then(res => {
+        return res.data
     })
 }

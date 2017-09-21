@@ -11,6 +11,8 @@
     "express-session": "^1.15.5",
     "massive": "^4.0.0",
     "moment": "^2.18.1",
+    "ontime": "0.0.3",
+    "pure-react-carousel": "^1.9.7",
     "react": "^15.6.1",
     "react-big-calendar": "^0.15.0",
     "react-dom": "^15.6.1",

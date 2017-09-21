@@ -11,7 +11,7 @@ export default class CheckoutInventory extends Component {
 
         this.state = {
             customer_id: null,
-            rentalID: null,
+            rental_id: null,
             rentalDisplay: [],
             paddleboards: 0,
             kayaks: 0,
@@ -31,6 +31,7 @@ export default class CheckoutInventory extends Component {
             .then((res) => {
                 this.setState({
                     rentalDisplay: res.data,
+                    rental_id: res.data[0].rental_id,
                     customer_id: res.data[0].customer_id,
                     paddleboards: res.data[0].paddleboards,
                     kayaks: res.data[0].kayaks,

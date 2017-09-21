@@ -3,7 +3,7 @@ import dashReducer from './ducks/dashReducer';
 import promiseMiddleware from 'redux-promise-middleware';
 
 const reducer = combineReducers({
-    dashboard: dashReducer
+    dashboard: dashReducer,
 })
 
 export default createStore(
