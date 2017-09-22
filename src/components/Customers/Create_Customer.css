@@ -1,6 +1,94 @@
+@import url("https://fonts.googleapis.com/css?family=Permanent+Marker");
+
 .cust_creator_container {
     width: 100%;
     height: 100vh;
+    background-image: url('../../assets/Paddle-Boarding-Clear-Water.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cust_creator_form {
+    background-color: rgba(255, 255, 255, 0.70);
+    box-shadow: 0px 1px 15px #000000;      
+    width: 80%;
+    height: 80%;
+    margin-top: 50px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cust_creator_heading {
+    font-family: 'Permanent Marker', sans-serif;
+    font-size: 30px;
+}
+
+.name_container {
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.name_box {
+    width: 47%;
+    height: 4vh;
+}
+
+.contact_container {
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.phone_box {
+    width: 28%;
+    height: 4vh;
+}
+
+.email_box {
+    width: 66%;
+    height: 4vh;
+}
+
+.street_box {
+    width: 60%;
+    height: 4vh;
+    margin-bottom: 15px;
+}
+
+.address_container {
+    width: 60%;
+    height: 4vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 15px;    
+}
+
+.city_box {
+    width: 70%;
+    height: 4vh;
+}
+
+.state_box {
+    border: 1px solid #ccc;
+    width: 25%;
+    height: 100%;
+    border: none;
+}
+
+.zip_box {
+    width: 20%;
+    height: 4vh;
+    margin-bottom: 15px;
 }

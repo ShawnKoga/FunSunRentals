@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-// import BigCalendar from 'react-big-calendar';
+import BigCalendar from 'react-big-calendar';
 import Header from './Header';
-// import moment from 'moment';
+import moment from 'moment';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getActiveRentalCount, getAvailPB, getAvailKayaks, getAvailLifeJackets, getAvailRoofRacks, getUpcomingDue, getPastDue, quickClose } from '../../ducks/dashReducer';
@@ -9,7 +9,7 @@ import { getActiveRentalCount, getAvailPB, getAvailKayaks, getAvailLifeJackets, 
 import axios from 'axios';
 
 import './Dashboard.css';
-// import 'react-big-calendar/lib/css/react-big-calendar.css';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
 import 'pure-react-carousel/dist/react-carousel.es.css';
 
 let url = 'http://localhost:8080';
@@ -50,9 +50,9 @@ class Dashboard extends Component {
 
 
     render() {
-        // BigCalendar.momentLocalizer(moment);
+        BigCalendar.momentLocalizer(moment);
 
-        // var myEventsList = [];
+        var myEventsList = [];
 
         const rentalQuickView = this.props.activeRentalCount.map((c, i) => {
             var closeObj = {rentalID: c.rental_id}
@@ -88,18 +88,18 @@ class Dashboard extends Component {
 
                         <div className="quick_guide_container">
                             <div className="quick_guide_component">
-                                <h2>QuickStats</h2>
+                                <div className="quick_guide_title">QuickStats</div>
                                 <div>Active Rentals: {this.props.activeRentalCount.length}</div>
+                                <div>Rentals Past Due: {this.props.pastDueRentals}</div>
+                                <div>Upcoming Due: {this.props.upcomingDueRentals}</div>
                                 <div>Avail. PB: {this.props.currentAvailPB}</div>
                                 <div>Avail. Kayaks: {this.props.currentAvailKayaks}</div>
                                 <div>Avail. Jackets: {this.props.currentAvailLifeJackets}</div>
                                 <div>Avail. Racks: {this.props.currentAvailRoofRacks}</div>
-                                <div>Rentals Past Due: {this.props.pastDueRentals}</div>
-                                <div>Upcoming Due: {this.props.upcomingDueRentals}</div>
                             </div>
 
                             <div className="quick_guide_component">
-                                <h2>QuickLinks</h2>
+                                <div className="quick_guide_title">QuickLinks</div>
                                 <Link to="/new_rental">New Rental</Link>
                                 <Link to="/close_rental">Close Rental</Link>
                                 <Link to="/new_customer">New Customer</Link>
@@ -123,28 +123,28 @@ class Dashboard extends Component {
                         </div> */}
 
                         <div className="rental_quick_view_container">
-                            <div>
-                                OPEN RENTALS:
+                                <div className="quick_guide_title">OPEN RENTALS:</div>
                                 {rentalQuickView}
-                            </div>
                         </div>
 
-                        {/* <div className="calendar">
+                    </container>
+                </section>
+
+                <section className="calendar_container">
+                        <div className="calendar">
                             <BigCalendar
                                 views={{month: true, week: true, day: false, agenda: true}}
                                 events={myEventsList}
                                 startAccessor='startDate'
                                 endAccessor='endDate'
                             />
-                        </div> */}
-
-
-                    </container>
+                        </div>
                 </section>
             </main>
         )
     }
 }
+
 function mapStateToProps(state) {
     return state.dashboard
 }

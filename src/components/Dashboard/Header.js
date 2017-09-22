@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import svg from '../../assets/hamburger.svg';
+import logo from '../../assets/FUTSRArtboard 1.png';
 import AdminMenu from './Admin_Menu';
+import { Link } from 'react-router-dom';
 
-import './Admin_Menu.css'
+import './Admin_Menu.css';
+import './Header.css';
 
 export default class Header extends Component {
     constructor() {
@@ -55,7 +58,7 @@ export default class Header extends Component {
 
                 <section className="dash_header">
                     <img src={svg} className="hamburger" onClick={() => this.toggleMenu()} alt="hamburger" />
-                    <h1>FUN UNDER THE SUN RENTALS</h1>
+                    <Link to="/dashboard" className="header_title">Fun Under the Sun Rentals</Link>
                     <div className="credentials">
                         <div className="picture"></div>
                         <div className="name_logout_container">
