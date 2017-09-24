@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './CheckoutInventory.css';
+import Header from '../Dashboard/Header';
 
 let url = 'http://localhost:8080';
 
@@ -43,9 +44,9 @@ export default class CheckoutInventory extends Component {
 
     confirmCheckout(obj) {
         axios.put(url + `/rentals/confirm_checkout`, obj)
-        .then(res => {
-            alert(res.data)
-        })
+            .then(res => {
+                alert(res.data)
+            })
     }
 
     render() {
@@ -53,36 +54,57 @@ export default class CheckoutInventory extends Component {
             var start = (c.start_date).substring(0, (c.start_date).indexOf('T'));
             var end = (c.end_date).substring(0, (c.end_date).indexOf('T'));
             return (
-                <div key={i}>
-                    <h2>Rental #: {c.rental_id}</h2>
-                    <h2>Customer Name - id: {c.firstname} {c.lastname} - {c.customer_id}</h2>
-                    <h3>Phone: {c.phone} | Email: {c.email}</h3>
-                    <div>Start: {start}</div>
-                    <div>Due: {end}</div>
-                    <div>Paddleboards: {c.paddleboards}</div>
-                    <div>Kayaks: {c.kayaks}</div>
-                    <div>Roof Racks: {c.roofracks}</div>
-                    <div>Life Jackets: {c.lifejackets}</div>
-                    <button onClick={() => this.confirmCheckout(this.state)}>Confirm Inventory Checkout</button>
-                    <Link to="/dashboard"><button>Done</button></Link>
+                <div key={i} className="rental_info">
+                    <div className="rental_info_container">
+                    <div className="rental_info_key">Customer Name:&nbsp;</div><div className="rental_info_val">{c.firstname} {c.lastname} - {c.customer_id}</div>
+                    </div>
+                    <div className="rental_info_container">
+                    <div className="rental_info_key">Phone:&nbsp;</div><div className="rental_info_val">{c.phone}</div>
+                    </div>
+                    <div className="rental_info_container">
+                    <div className="rental_info_key">Email:&nbsp;</div><div className="rental_info_val">{c.email}</div>
+                    </div>
+                    <div className="rental_info_container">
+                    <div className="rental_info_key">Start:&nbsp;</div><div className="rental_info_val">{start}</div>
+                    </div>
+                    <div className="rental_info_container">
+                    <div className="rental_info_key">Due:&nbsp;</div><div className="rental_info_val">{end}</div>
+                    </div>
+                    <div className="rental_info_container">
+                    <div className="rental_info_key">Paddleboards:&nbsp;</div><div className="rental_info_val">{c.paddleboards}</div>
+                    </div>
+                    <div className="rental_info_container">
+                    <div className="rental_info_key">Kayaks:&nbsp;</div><div className="rental_info_val">{c.kayaks}</div>
+                    </div>
+                    <div className="rental_info_container">
+                    <div className="rental_info_key">Roof Racks:&nbsp;</div><div className="rental_info_val">{c.roofracks}</div>
+                    </div>
+                    <div className="rental_info_container">
+                    <div className="rental_info_key">Life Jackets:&nbsp;</div><div className="rental_info_val">{c.lifejackets}</div>
+                    </div>
+                    <button className="confirm_checkout_button" onClick={() => this.confirmCheckout(this.state)}>Confirm Inventory Checkout</button>
+                    <Link to="/dashboard"><button className="back_to_dash_button" >Back to Dash</button></Link>
                 </div>
             )
         })
 
         return (
-            <main className="inventory_checkout_main" >
-                <h1> INVENTORY CHECKOUT</h1>
-                <div>
-                    Rental #: <input onChange={(e) => this.updateRentalId(e.target.value)} />
-                </div>
-                <div>
-                    <button onClick={() => this.getRentalInfo(this.state.rentalID)}>Get Rental Info</button>
-                    <Link to="/dashboard"><button>Cancel</button></Link>
-                </div>
-                <div className="rental_info">
-                    { rentalDisplay }
-                </div>
-            </main>
+            <div>
+                <Header />
+                <main className="inventory_checkout_main" >
+                    <div className="inventory_checkout_container">
+                        <h1> INVENTORY CHECKOUT</h1>
+                        <div>
+                            Rental #: <input onChange={(e) => this.updateRentalId(e.target.value)} />
+                        </div>
+                        <div className="checkout_button_container">
+                            <button className="get_rental_info_button" onClick={() => this.getRentalInfo(this.state.rentalID)}>Get Rental Info</button>
+                            <Link to="/dashboard"><button className="back_to_dash_button" >Cancel</button></Link>
+                        </div>
+                        {rentalDisplay}
+                    </div>
+                </main>
+            </div>
         )
     }
 }

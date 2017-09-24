@@ -5,6 +5,7 @@ import moment from 'moment';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getActiveRentalCount, getAvailPB, getAvailKayaks, getAvailLifeJackets, getAvailRoofRacks, getUpcomingDue, getPastDue, quickClose } from '../../ducks/dashReducer';
+import { updateCustomerID } from '../../ducks/createRentalReducer';
 // import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
 import axios from 'axios';
 
@@ -100,7 +101,7 @@ class Dashboard extends Component {
 
                             <div className="quick_guide_component">
                                 <div className="quick_guide_title">QuickLinks</div>
-                                <Link to="/new_rental">New Rental</Link>
+                                <Link to="/new_rental" onClick={() => this.props.updateCustomerID(0)}>New Rental</Link>
                                 <Link to="/close_rental">Close Rental</Link>
                                 <Link to="/new_customer">New Customer</Link>
                                 <div>Rental Lookup</div>
@@ -149,4 +150,4 @@ function mapStateToProps(state) {
     return state.dashboard
 }
 
-export default connect(mapStateToProps, { getActiveRentalCount, getAvailPB, getAvailKayaks, getAvailLifeJackets, getAvailRoofRacks, getUpcomingDue, getPastDue, quickClose })(Dashboard)
+export default connect(mapStateToProps, { getActiveRentalCount, getAvailPB, getAvailKayaks, getAvailLifeJackets, getAvailRoofRacks, getUpcomingDue, getPastDue, quickClose, updateCustomerID })(Dashboard)

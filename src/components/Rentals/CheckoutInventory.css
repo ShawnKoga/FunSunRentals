@@ -1,11 +1,96 @@
 .inventory_checkout_main {
+    background-image: url('../../assets/paddle_board_shop.jpg');
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.inventory_checkout_container {
+    width: 30%;
+    height: 85%;
+    border-radius: 25px;
+    background-color: rgba(255, 255, 255, 0.70);
+    box-shadow: 0px 1px 15px #000000;
+    margin-top: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.checkout_button_container {
+    width: 85%;
+    display: flex;
+    justify-content: space-around;
+    border-bottom-style: solid;
+    border-color: gray;
+    padding-bottom: 35px;
+}
+
+.get_rental_info_button {
+    border-style: none;
+    border-radius: 5px;
+    background: palegreen;
+    box-shadow: 0px 1px 5px #000000;    
+    width: 150px;
+    height: 30px;
+    font-weight: bold;
+    font-size: 13px;
+    margin-top: 15px;
+    cursor: pointer;
 }
 
 .rental_info {
-    /* background: yellow; */
-    height: 50%;
     width: 100%;
-    z-index: 100;
+    height: 100%;
+    margin-top: -25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.rental_info_container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.rental_info_key {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.rental_info_val {
+    font-size: 20px;
+}
+
+.confirm_checkout_button {
+    border-style: none;
+    border-radius: 5px;
+    background: palegreen;
+    box-shadow: 0px 1px 5px #000000;    
+    width: 200px;
+    height: 30px;
+    font-weight: bold;
+    font-size: 13px;
+    margin-top: 15px;
+    cursor: pointer;    
+}
+
+.back_to_dash_button {
+    border-style: none;
+    border-radius: 5px;
+    background: lightcoral;
+    box-shadow: 0px 1px 5px #000000;    
+    width: 150px;
+    height: 30px;
+    font-weight: bold;
+    font-size: 13px;
+    margin-top: 15px;
+    cursor: pointer;    
 }

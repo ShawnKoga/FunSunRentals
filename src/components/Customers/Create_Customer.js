@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import Header from '../Dashboard/Header';
 import './Create_Customer.css';
+import NewCustomerCard from './New_Customer_Card';
 
 let url = 'http://localhost:8080';
 
@@ -11,16 +12,20 @@ export default class Create_Customer extends Component {
         super();
 
         this.state = {
-            firstName: "",
-            lastName: "",
-            email: "",
-            phone: "",
-            address: "",
-            city: "",
-            state: "",
+            firstName: null,
+            lastName: null,
+            email: null,
+            phone: null,
+            address: null,
+            city: null,
+            state: null,
             zip: null,
-            customerDisplay: []
+            customerDisplay: [],
+            showCustCard: false
         }
+
+        this.resetCustCard = this.resetCustCard.bind(this)
+        this.clearFields = this.clearFields.bind(this)
     }
 
     updateFirstName(e) {
@@ -54,7 +59,6 @@ export default class Create_Customer extends Component {
         })
     }
     updateState(e) {
-        console.log('da log', e)
         this.setState({
             state: e
         })
@@ -65,55 +69,82 @@ export default class Create_Customer extends Component {
         })
     }
     createCustomer(obj) {
-        axios.post(url + `/customers/create_new_customer`, obj)
-            .then((res) => {
-                this.setState({
-                    customerDisplay: res.data
+        if (this.state.firstName !== null && this.state.lastName !== null && this.state.phone !== null && this.state.address !== null && this.state.city !== null && this.state.state !== null) {
+            axios.post(url + `/customers/create_new_customer`, obj)
+                .then((res) => {
+                    this.setState({
+                        customerDisplay: res.data
+                    })
                 })
+            this.setState({
+                showCustCard: !this.state.showCustCard
             })
+        } else {
+            alert('Please fill out customer info!')
+        }
+    }
+    resetCustCard() {
+        this.setState({
+            customerDisplay: []
+        })
+    }
+    clearFields() {
+        document.getElementById('textfield1').value = '';
+        document.getElementById('textfield2').value = '';
+        document.getElementById('textfield3').value = '';
+        document.getElementById('textfield4').value = '';
+        document.getElementById('textfield5').value = '';
+        document.getElementById('textfield6').value = '';
+        document.getElementById('textfield7').value = '';
+        document.getElementById('selectfield').value = 'null';
     }
 
     render() {
-        const newUser = this.state.customerDisplay.map((c, i) => {
-            return (
-                <div key={i}>
-                    <h2>CUSTOMER CREATED:</h2>
-                    <div>Customer ID: {c.customer_id}</div>
-                    <div>Name: {c.firstname} {c.lastname}</div>
-                    <div>Phone: {c.phone}</div>
-                    <div>Email: {c.email}</div>
-                    <div>Address: {c.address}</div>
-                    <div>City: {c.city}</div>
-                    <div>State: {c.state}</div>
-                    <div>Zip: {c.zip}</div>
-                    <Link to="/dashboard"><button>Done</button></Link>
-                    <Link to="/new_rental"><button>Create Rental</button></Link>
-                </div>
-            )
-        })
+        // const newCustomer = this.state.customerDisplay.map((c, i) => {
+        //     return (
+        //         <div key={i} className={"new_customer_card"}>
+        //             <div className="cust_creator_heading">CUSTOMER CREATED:</div>
+        //             <div>Customer ID: {c.customer_id}</div>
+        //             <div>Name: {c.firstname} {c.lastname}</div>
+        //             <div>Phone: {c.phone}</div>
+        //             <div>Email: {c.email}</div>
+        //             <div>Address: {c.address}</div>
+        //             <div>City: {c.city}</div>
+        //             <div>State: {c.state}</div>
+        //             <div>Zip: {c.zip}</div>
+        //             <Link to="/dashboard"><button>Done</button></Link>
+        //             <Link to="/new_rental"><button>Create Rental</button></Link>
+        //         </div>
+        //     )
+        // })
 
         return (
             <div>
                 <Header />
                 <div className="cust_creator_container">
+                    <NewCustomerCard resetCustCard={this.resetCustCard}
+                        clearFields={this.clearFields}
+                        customerDisplay={this.state.customerDisplay} />
+
                     <section className="cust_creator_form">
                         <div className="cust_creator_heading">Name:</div>
                         <div className="name_container">
-                            <input className="name_box" onChange={(e) => this.updateFirstName(e.target.value)} placeholder="FIRST NAME" />
-                            <input className="name_box" onChange={(e) => this.updateLastName(e.target.value)} placeholder="LAST NAME" />
+                            <input id="textfield1" className="name_box" onChange={(e) => this.updateFirstName(e.target.value)} placeholder="FIRST NAME" />
+                            <input id="textfield2" className="name_box" onChange={(e) => this.updateLastName(e.target.value)} placeholder="LAST NAME" />
                         </div>
 
                         <div className="cust_creator_heading">Contact:</div>
                         <div className="contact_container">
-                            <input className="phone_box" onChange={(e) => this.updatePhone(e.target.value)} placeholder="PHONE" />
-                            <input className="email_box" onChange={(e) => this.updateEmail(e.target.value)} placeholder="EMAIL" />
+                            <input id="textfield3" className="phone_box" onChange={(e) => this.updatePhone(e.target.value)} placeholder="PHONE" />
+                            <input id="textfield4" className="email_box" onChange={(e) => this.updateEmail(e.target.value)} placeholder="EMAIL" />
                         </div>
 
                         <div className="cust_creator_heading">Address:</div>
-                        <input className="street_box" onChange={(e) => this.updateAddress(e.target.value)} placeholder="ADDRESS" />
+                        <input id="textfield5" className="street_box" onChange={(e) => this.updateAddress(e.target.value)} placeholder="ADDRESS" />
                         <div className="address_container">
-                            <input className="city_box" onChange={(e) => this.updateCity(e.target.value)} placeholder="CITY" />
-                            <select className="state_box" onChange={(e) => this.updateState(e.target.value)}>
+                            <input id="textfield6" className="city_box" onChange={(e) => this.updateCity(e.target.value)} placeholder="CITY" />
+                            <select id="selectfield" className="state_box" onChange={(e) => this.updateState(e.target.value)}>
+                                <option value="null">SELECT ONE</option>
                                 <option value="AL">Alabama</option>
                                 <option value="AK">Alaska</option>
                                 <option value="AZ">Arizona</option>
@@ -166,17 +197,12 @@ export default class Create_Customer extends Component {
                                 <option value="WI">Wisconsin</option>
                                 <option value="WY">Wyoming</option>
                             </select>
-                            {/* <input className="state_box" onChange={(e) => this.updateState(e.target.value)} placeholder="STATE" /> */}
                         </div>
-                        <input className="zip_box" onChange={(e) => this.updateZip(e.target.value)} placeholder="ZIP" />
+                        <input id="textfield7" className="zip_box" onChange={(e) => this.updateZip(e.target.value)} placeholder="ZIP" />
 
-                        <button onClick={() => this.createCustomer(this.state)}>CREATE CUSTOMER</button>
-                        <Link to="/dashboard"><button>Cancel</button></Link>
+                        <button className="create_customer_button" onClick={() => this.createCustomer(this.state)}>Create Customer</button>
+                        <Link to="/dashboard"><button className="cancel_customer_button">Cancel</button></Link>
                     </section>
-
-                    <div>
-                        {newUser}
-                    </div>
                 </div>
             </div>
         )

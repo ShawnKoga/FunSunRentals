@@ -11,7 +11,7 @@ import CheckoutInventory from './components/Rentals/CheckoutInventory';
 
 export default(
     <Switch>
-       <Route exact path='/' component={ Login } />
+       <Route path='/login' component={ Login } />
        <Route path='/dashboard' component={ Dashboard } />
        <Route path='/new_rental' component={ Create_Rental } />
        <Route path='/checkout_inventory' component={ CheckoutInventory } />

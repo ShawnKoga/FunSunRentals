@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css?family=Permanent+Marker");
+
 .admin_nav_container {
     background: rgb(255, 255, 255);
     width: 55%;
@@ -6,10 +8,11 @@
     z-index: 100;
     cursor: pointer;
     overflow: scroll;
+    box-shadow: 0px 1px 15px #000000;        
 }
 
 .admin_menu_header {
-    background: white;
+    background: #F6B261;
     width: 100%;
     border-color: black;
     border-style: solid;
@@ -19,12 +22,13 @@
 }
 
 .close_button {
-    background: white;
+    background: #F6B261;
     width: 10%;
     font-size: 25px;
     border-style: none;
     padding-left: 20px;
     cursor: pointer;
+    font-family: 'Permanent Marker', sans-serif;
 }
 
 .admin_nav_link {
@@ -36,6 +40,7 @@
     padding-left: 15px; 
     display: flex;
     align-items: center;
+    font-family: 'Permanent Marker', sans-serif;
 }
 
 .show {
@@ -55,7 +60,7 @@
 .home_sub {
     height: 35px;
     width: 100%;
-    background: lightgray;
+    background: #E5EFF3;
     color: black;
     border-bottom: 1px solid black;
     display: flex;
@@ -94,7 +99,7 @@
     .home_sub {
         height: 45px;
         width: 100%;
-        background: lightgray;
+        background: #E5EFF3;
         color: black;
         border-bottom: 1px solid black;
         display: flex;

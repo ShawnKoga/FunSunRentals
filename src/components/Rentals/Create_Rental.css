@@ -1,17 +1,58 @@
+@import url("https://fonts.googleapis.com/css?family=Permanent+Marker");
+
 .newRentalContainer {
     width: 100%;
     height: 100vh;
-    /* background: gray; */
+    background-image: url('../../assets/Car-at-lake.jpg');
+    background-size: cover;
+    background-position: right;
+}
+
+.transparency_hue {
+    background: rgba(227, 79, 243, 0.1);
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .create_rental_container {
-    width: 70%;
-    height: 100vh;
-    /* background: yellow; */
+    width: 30%;
+    height: 80%;
+    background-color: rgba(255, 255, 255, 0.80);    
+    border-radius: 25px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    margin-top: 55px;
+}
+
+.create_rental_title {
+    font-family: 'Permanent Marker', sans-serif;
+    font-size: 40px;
+    text-align: center;
+    margin-top: -20px;
+    margin-bottom: 20px;
+}
+
+.create_rental_category {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.customer_lookup_button {
+    background: none;
+    border-style: none;
+    text-decoration: underline;
+    color: blue;
+    font-size: 13px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+
+.input_box {
+    margin-bottom: 10px;
 }

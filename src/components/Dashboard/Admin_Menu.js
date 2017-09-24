@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { updateCustomerID } from '../../ducks/createRentalReducer';
 
-export default class Admin_Menu extends Component {
+class Admin_Menu extends Component {
     render() {
         return (
             <div className={"admin_nav_container " + (this.props.showMenu ? 'show' : 'hide')}>
                 <div className="admin_menu_header">
-                    <button className="close_button" onClick={() => this.props.toggleMenu()}>&#10006;</button>
+                    <button className="close_button" onClick={() => this.props.toggleMenu()}>x</button>
                 </div>
 
                 <div className="admin_nav_link" onClick={() => this.props.toggleSubMenu('RENT')}>RENTALS</div>
                 <div className={this.props.showRentTools ? 'show_sub' : 'hide_sub'}>
-                    <Link className="home_sub" to="/new_rental">CREATE NEW</Link>
+                    <Link className="home_sub" to="/new_rental" onClick={() => this.props.updateCustomerID(0)}>CREATE NEW</Link>
                     <Link className="home_sub" to="/close_rental">CLOSE RENTAL</Link>
                     <Link className="home_sub" to="/checkout_inventory">MANUAL INVENTORY CHECKOUT</Link>
                     <li className="home_sub">BY CUSTOMER</li>
@@ -38,3 +40,9 @@ export default class Admin_Menu extends Component {
         )
     }
 }
+
+function mapStateToProps(state) {
+    return state;
+}
+
+export default connect(mapStateToProps, { updateCustomerID })(Admin_Menu);

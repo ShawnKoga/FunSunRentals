@@ -26,8 +26,8 @@ const GET_UPCOMING_DUE = "GET_UPCOMING_DUE";
 const GET_UPCOMING_DUE_FULFILLED = "GET_UPCOMING_DUE_FULFILLED";
 const GET_PAST_DUE = "GET_PAST_DUE";
 const GET_PAST_DUE_FULFILLED = "GET_PAST_DUE_FULFILLED";
-const QUICK_CLOSE = "QUICK_CLOSE"
-const QUICK_CLOSE_FULFILLED = "QUICK_CLOSE"
+const QUICK_CLOSE = "QUICK_CLOSE";
+const QUICK_CLOSE_FULFILLED = "QUICK_CLOSE";
 
 //REDUCER
 export default function dashReducer(state = initialState, action) {
@@ -61,7 +61,7 @@ export default function dashReducer(state = initialState, action) {
     }
 }
 
-//ACTION BUILDERS
+//ACTION CREATORS
 export function getActiveRentalCount() {
     return {
         type: GET_ACTIVE_RENTALS,
