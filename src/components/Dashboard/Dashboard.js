@@ -27,7 +27,7 @@ ontime({
                     .then(res => {
                         alert(res.data)
                     }
-                )
+                    )
             })
         });
     ot.done()
@@ -45,9 +45,9 @@ class Dashboard extends Component {
         this.props.getUpcomingDue();
     }
 
-    // componentWillReceiveProps(nextProps) {
-    //     nextProps.getActiveRentalCount();
-    // }
+    componentWillReceiveProps(nextProps) {
+        nextProps.getActiveRentalCount();
+    }
 
 
     render() {
@@ -56,25 +56,24 @@ class Dashboard extends Component {
         var myEventsList = [];
 
         const rentalQuickView = this.props.activeRentalCount.map((c, i) => {
-            var closeObj = {rentalID: c.rental_id}
+            var closeObj = { rentalID: c.rental_id }
             // var start = (c.start_date).substring(0, (c.start_date).indexOf('T'));
             var end = (c.end_date).substring(0, (c.end_date).indexOf('T'));
             return (
                 <div key={i} className="open_rental_card">
                     <div>
-                        <div>Customer Name: {c.firstname} {c.lastname}</div>
-                        <div>Phone: {c.phone}</div>
-                        <div>Email: {c.email}</div>
-                        <div>Status: {c.status}</div>
-                        <div>Return Date: {end}</div>
-                        <div>Boards: {c.paddleboards}</div>
-                        <div>Kayaks: {c.kayaks}</div>
-                        <div>Racks: {c.roofracks}</div>
-                        <div>Jackets: {c.lifejackets}</div>
+                        <div className="rental_card_key">Customer Name:&nbsp;</div> <div className="rental_card_val">{c.firstname} {c.lastname}</div>
+                        <div className="rental_card_key">Phone:&nbsp;</div> <div className="rental_card_val">{c.phone}</div>
+                        <div className="rental_card_key">Email:&nbsp;</div> <div className="rental_card_val">{c.email}</div>
+                        <div className="rental_card_key">Return Date:&nbsp;</div> <div className="rental_card_val">{end}</div>
+                        <div className="rental_card_key">Boards:&nbsp;</div> <div className="rental_card_val">{c.paddleboards}</div>
+                        <div className="rental_card_key">Kayaks:&nbsp;</div> <div className="rental_card_val">{c.kayaks}</div>
+                        <div className="rental_card_key">Racks:&nbsp;</div> <div className="rental_card_val">{c.roofracks}</div>
+                        <div className="rental_card_key">Jackets:&nbsp;</div> <div className="rental_card_val">{c.lifejackets}</div>
                     </div>
                     <div>
-                        <div>Rental #: {c.rental_id}</div>
-                        <button className="quick_close_button" onClick={()=>{this.props.quickClose(closeObj)}}>Close Rental</button>
+                        <div className="rental_card_key">Rental #:&nbsp;</div> <div className="rental_card_val">{c.rental_id}</div>
+                        <button className="quick_close_button" onClick={() => { this.props.quickClose(closeObj) }}>Close Rental</button>
                     </div>
                 </div>
             )
@@ -105,18 +104,20 @@ class Dashboard extends Component {
                                 <Link to="/close_rental">Close Rental</Link>
                                 <Link to="/new_customer">New Customer</Link>
                                 <div>Rental Lookup</div>
+                                <Link to="/customer_lookup">Customer Lookup</Link>
                             </div>
                         </div>
 
                         {/* <div className="rental_quick_view_carousel">
                             <CarouselProvider
                                 naturalSlideWidth={100}
-                                naturalSlideHeight={125}
-                                totalSlides={3}>
+                                naturalSlideHeight={100}
+                                totalSlides={3}
+                            >
                                 <ButtonBack>Back</ButtonBack>
                                 <ButtonNext>Next</ButtonNext>
                                 <Slider>
-                                    <Slide index={0}>I am the first Slide</Slide>
+                                    <Slide index={0}>I am the first Slide.</Slide>
                                     <Slide index={1}>I am the second Slide.</Slide>
                                     <Slide index={2}>I am the third Slide.</Slide>
                                 </Slider>
@@ -124,22 +125,24 @@ class Dashboard extends Component {
                         </div> */}
 
                         <div className="rental_quick_view_container">
-                                <div className="quick_guide_title">OPEN RENTALS:</div>
+                            <div className="quick_guide_title">OPEN RENTALS:</div>
+                            <div className="quick_guide_card_container">
                                 {rentalQuickView}
+                            </div>
                         </div>
 
                     </container>
                 </section>
 
                 <section className="calendar_container">
-                        <div className="calendar">
-                            <BigCalendar
-                                views={{month: true, week: true, day: false, agenda: true}}
-                                events={myEventsList}
-                                startAccessor='startDate'
-                                endAccessor='endDate'
-                            />
-                        </div>
+                    <div className="calendar">
+                        <BigCalendar
+                            views={{ month: true, week: true, day: false, agenda: true }}
+                            events={myEventsList}
+                            startAccessor='startDate'
+                            endAccessor='endDate'
+                        />
+                    </div>
                 </section>
             </main>
         )

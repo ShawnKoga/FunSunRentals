@@ -1,5 +1,20 @@
 module.exports = {
     //CUSTOMERS
+    getAllCustomers: (req, res) => {
+        const dbInstance = req.app.get('db');
+        dbInstance.customers.getAllCustomers()
+        .then(customers => res.status(200).send(customers))
+        .catch(err => {res.status(500).send()})        
+    },
+
+    findCustomer: (req, res) => {
+        const dbInstance = req.app.get('db');
+        const {firstName, lastName, phone, email} = req.body;
+        dbInstance.customers.findCustomer(firstName, lastName, phone, email)
+        .then(customers => res.status(200).send(customers))
+        .catch(err => {res.status(500).send()})        
+    },
+
     createNewCustomer: (req, res) => {
         const dbInstance = req.app.get('db');
         const {firstName, lastName, email, phone, address, city, state, zip} = req.body;

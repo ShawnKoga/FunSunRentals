@@ -1,5 +1,5 @@
-import axios from 'axios';
-let url = 'http://localhost:8080';
+// import axios from 'axios';
+// let url = 'http://localhost:8080';
 
 let initialState = {
     customerID: 0,

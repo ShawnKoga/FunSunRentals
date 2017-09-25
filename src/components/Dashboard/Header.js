@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import svg from '../../assets/hamburger.svg';
-import logo from '../../assets/FUTSRArtboard 1.png';
+// import logo from '../../assets/FUTSRArtboard 1.png';
 import AdminMenu from './Admin_Menu';
 import { Link } from 'react-router-dom';
 

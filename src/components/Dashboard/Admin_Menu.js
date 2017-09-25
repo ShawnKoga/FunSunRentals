@@ -16,23 +16,18 @@ class Admin_Menu extends Component {
                     <Link className="home_sub" to="/new_rental" onClick={() => this.props.updateCustomerID(0)}>CREATE NEW</Link>
                     <Link className="home_sub" to="/close_rental">CLOSE RENTAL</Link>
                     <Link className="home_sub" to="/checkout_inventory">MANUAL INVENTORY CHECKOUT</Link>
-                    <li className="home_sub">BY CUSTOMER</li>
-                    <li className="home_sub">BY DATE</li>
-                    <li className="home_sub">ALL RENTALS</li>
+                    <li className="home_sub">LOOKUP</li>
                 </div>
 
                 <div className="admin_nav_link" onClick={() => this.props.toggleSubMenu('CUST')}>CUSTOMERS</div>
                 <div className={this.props.showCustTools ? 'show_sub' : 'hide_sub'}>
                     <Link className="home_sub" to="/new_customer">CREATE NEW</Link>
-                    <li className="home_sub">BY NAME</li>
-                    <li className="home_sub">BY RENTALS</li>
-                    <li className="home_sub">ALL CUSTOMERS</li>
+                    <Link className="home_sub" to="/customer_lookup">LOOKUP</Link>
                 </div>
 
                 <div className="admin_nav_link" onClick={() => this.props.toggleSubMenu('INVNTRY')}>INVENTORY</div>
                 <div className={this.props.showInventoryTools ? 'show_sub' : 'hide_sub'}>
                     <li className="home_sub">AVAILABILITY</li>
-                    <li className="home_sub">ALL INVENTORY</li>
                     <Link className="home_sub" to="/add_inventory">ADD NEW</Link>
                 </div>
                 {/* <div className="admin_nav_link">EMPLOYEES</div> */}

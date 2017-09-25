@@ -8,6 +8,7 @@ import CloseRental from './components/Rentals/CloseRental'
 import Create_Customer from './components/Customers/Create_Customer';
 import Add_Inventory from './components/Inventory/Add_Inventory';
 import CheckoutInventory from './components/Rentals/CheckoutInventory';
+import Customer_Lookup from './components/Customers/Customer_Lookup';
 
 export default(
     <Switch>
@@ -18,5 +19,6 @@ export default(
        <Route path='/close_rental' component={ CloseRental } />
        <Route path='/new_customer' component={ Create_Customer } />
        <Route path='/add_inventory' component={ Add_Inventory } />
+       <Route path='/customer_lookup' component={ Customer_Lookup } />
     </Switch>
 )
