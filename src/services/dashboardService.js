@@ -9,6 +9,27 @@ export function getActiveRentalCount() {
         })
 }
 
+export function getPendingRentals() {
+    return axios.get(`${url}/rentals/get_pending_quick`)
+        .then(res => {
+            return res.data
+        })
+}
+
+export function pastDueRentals() {
+    return axios.get(`${url}/rentals/get_past_due`)
+    .then(res => {
+        return (res.data)
+    })
+}
+
+export function upcomingDueRentals() {
+    return axios.get(`${url}/rentals/get_upcoming_due`)
+        .then(res => {
+            return (res.data)
+        })
+}
+
 export function getAvailPB() {
     return axios.get(`${url}/inventory/get_pb_avail`)
         .then(res => {
@@ -35,20 +56,6 @@ export function getAvailRoofRacks() {
         .then(res => {
             return res.data[0].count
         })
-}
-
-export function upcomingDueRentals() {
-    return axios.get(`${url}/rentals/get_upcoming_due`)
-        .then(res => {
-            return (res.data[0].count)
-        })
-}
-
-export function pastDueRentals() {
-    return axios.get(`${url}/rentals/get_past_due`)
-    .then(res => {
-        return (res.data[0].count)
-    })
 }
 
 export function quickClose(id) {

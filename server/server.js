@@ -29,11 +29,14 @@ app.get('/inventory/get_lj_avail', controller.getAvailLifeJackets)
 app.get('/inventory/get_rr_avail', controller.getAvailRoofRacks)
 
 //RENTAL ENDPOINTS
+app.get('/rentals/get_all_rentals', controller.getAllRentals)
+app.get('/rentals/get_pending_quick', controller.getPendingQuick)
 app.get('/rentals/get_active_count', controller.getActiveRentals)
 app.get('/rentals/get_upcoming_due', controller.getUpcomingDue)
 app.get('/rentals/get_past_due', controller.getPastDue)
 app.get('/rentals/get_rental/:id', controller.getRentalInfo)
 app.post('/rentals/create_new_rental', controller.createNewRental)
+app.put('/rentals/find_rental', controller.findRental)
 app.put('/rentals/confirm_checkout', controller.assignInventory)
 app.put('/rentals/close_rental', controller.closeRental)
 

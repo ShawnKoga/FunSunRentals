@@ -1,5 +1,4 @@
 SELECT *
 FROM rentals
 JOIN customers ON customers.customer_id = rentals.customer_id
-WHERE end_date < CURRENT_DATE AND status = 'OPEN'
-ORDER BY end_date ASC;
+WHERE firstname = $1 OR lastname = $2 OR phone = $3 OR email = $4;

@@ -61,11 +61,33 @@ module.exports = {
     },
 
     //RENTALS
+    getAllRentals: (req, res) => {
+        const dbInstance = req.app.get('db');
+        dbInstance.rentals.getAllRentals()
+        .then(rentals => res.status(200).send(rentals))
+        .catch(err => {res.status(500).send()})
+    },
+
+    findRental: (req,res) => {
+        const dbInstance = req.app.get('db');
+        const {firstName, lastName, phone, email, custID, dueDate} = req.body
+        dbInstance.rentals.findRental(firstName, lastName, phone, email)
+        .then(rentals => res.status(200).send(rentals))
+        .catch(err => {res.status(500).send()})      
+    },
+
     getActiveRentals: (req, res) => {
         const dbInstance = req.app.get('db');
         dbInstance.rentals.getActiveRentals()
         .then(obj => res.status(200).send(obj))
         .catch(err => {res.status(500).send()})        
+    },
+
+    getPendingQuick: (req, res) => {
+        const dbInstance = req.app.get('db');
+        dbInstance.rentals.getPendingQuickView()
+        .then(obj => res.status(200).send(obj))
+        .catch(err => {res.status(500).send()})
     },
 
     getUpcomingDue: (req, res) => {

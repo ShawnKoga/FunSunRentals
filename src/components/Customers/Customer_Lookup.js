@@ -51,9 +51,13 @@ class Customer_Lookup extends Component {
     findCustomer(obj) {
         axios.put(`${url}/customers/find_customer`, obj)
             .then((res) => {
-                this.setState({
-                    customerDisplay: res.data
-                })
+                if (res.data.length === 0) {
+                    alert('Customer not found!')
+                } else {
+                    this.setState({
+                        customerDisplay: res.data
+                    })
+                }
             })
     }
     resetCustomerDisplay() {
@@ -79,6 +83,7 @@ class Customer_Lookup extends Component {
                         <div className="cust_disp_key">Phone:&nbsp;</div><div className="cust_disp_val">{c.phone}</div>
                         <div className="cust_disp_key">Email:&nbsp;</div><div className="cust_disp_val">{c.email}</div>
                         <div className="cust_disp_key">Address:&nbsp;</div><div className="cust_disp_val">{c.address}</div>
+                        <div className="cust_disp_key">City:&nbsp;</div><div className="cust_disp_val">{c.city}</div>
                         <div className="cust_disp_key"> State:&nbsp;</div><div className="cust_disp_val">{c.state}</div>
                         <div className="cust_disp_key">ZIP:&nbsp;</div><div className="cust_disp_val">{c.zip}</div>
                         <div className="cust_disp_key">Customer ID:&nbsp;</div><div className="cust_disp_val">{c.customer_id}</div>
@@ -121,4 +126,4 @@ function mapStateToProps(state) {
     return state;
 }
 
-export default connect(mapStateToProps, {updateCustomerID})(Customer_Lookup);
+export default connect(mapStateToProps, { updateCustomerID })(Customer_Lookup);

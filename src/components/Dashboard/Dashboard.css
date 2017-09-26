@@ -63,18 +63,31 @@
     /* justify-content: center; */
 }
 
-.rental_quick_view_carousel{
+.rental_quick_view_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.rental_quick_view_title {
+    font-family: 'Permanent Marker', sans-serif;
+    font-size: 35px;
+    text-align: center;
+}
+
+/* .rental_quick_view_carousel{
     background-color: rgba(255, 255, 255, 0.70);
     width: 60%;
     height: 70%;
     padding: 20px;
     border-radius: 10px;
-}
+} */
 
 .open_rental_card {
     background: lightskyblue;
     width: 30%;
-    height: 50%;
+    height: 80%;
     margin: 5px;
     border-radius: 10px;
     display: flex;
@@ -97,7 +110,16 @@
     box-shadow: 0px 1px 5px #000000;
     font-weight: bold;
     font-size: 12px;
-    margin-top: 10px;    
+    margin-top: 10px;
+    cursor: pointer;  
+}
+
+.show_widget {
+    visibility: visible
+}
+
+.hide_widget {
+    display: none
 }
 
 /* .quick_close_button {

@@ -54,7 +54,7 @@ export default class CheckoutInventory extends Component {
             var start = (c.start_date).substring(0, (c.start_date).indexOf('T'));
             var end = (c.end_date).substring(0, (c.end_date).indexOf('T'));
             return (
-                <div key={i} className="rental_info">
+                <div key={i} className="pending_rental_info">
                     <div className="rental_info_container">
                     <div className="rental_info_key">Customer Name:&nbsp;</div><div className="rental_info_val">{c.firstname} {c.lastname} - {c.customer_id}</div>
                     </div>

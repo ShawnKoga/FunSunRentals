@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Permanent+Marker");
 
-.customer_lookup_main_container {
+.rental_lookup_main_container {
     background-image: url('../../assets/paddle_board_shop.jpg');
     background-size: cover;
     width: 100%;
@@ -10,13 +10,13 @@
     align-items: center;
 }
 
-.cust_lookup_title {
+.rental_lookup_title {
     font-family: 'Permanent Marker', sans-serif;
     font-size: 40px;
     text-align: center;
 }
 
-.customer_lookup_card {
+.rental_lookup_card {
     width: 95%;
     height: 85%;
     background-color: rgba(255, 255, 255, 0.80);    
@@ -28,16 +28,17 @@
     box-shadow: 0px 1px 15px #000000;
 }
 
-.cust_lookup_input_container{
+.rental_lookup_input_container{
     width: 90%;
     display: flex;
     padding-left: 10px;
     padding-right: 10px;
     justify-content: space-around;
+    margin-bottom: 20px;
 }
 
-.cust_info_box {
-    width: 23%;
+.rental_info_box {
+    width: 30%;
     height: 30px;
     border-style: none;
     border-radius: 5px;
@@ -48,9 +49,8 @@
     
 }
 
-.cust_lookup_button_container {
+.rental_lookup_button_container {
     width: 95%;
-    margin-top: 10px;
     padding-bottom: 10px;
     display: flex;
     justify-content: center;
@@ -59,11 +59,11 @@
     border-color: gray;
 }
 
-.cust_lookup_button {
+.rental_lookup_button {
     margin: 10px;
     border-style: none;
     border-radius: 5px;
-    background: lightskyblue;
+    background: lightgreen;
     width: 150px;
     height: 30px;
     font-weight: bold;
@@ -73,7 +73,7 @@
 }
 
 /* RETURNED CUSTOMER INFO */
-.returned_customer_space {
+.returned_rental_space {
     /* background: lemonchiffon; */
     width: 100%;
     height: 80%;
@@ -82,25 +82,46 @@
     flex-wrap: wrap;
     overflow: scroll;
 }
-.customer_display_card {
-    width: 25%;
+.rental_display_card {
+    background-image: url('../../assets/FUTSRArtboard 1.png');
+    background-size: cover;
+    background-blend-mode: overlay;;
+    width: 35%;
     height: 85%;
-    background: silver;
+    background-color: lightgray;
     box-shadow: 0px 0px 5px #000000;      
     border-radius: 25px;
     padding: 15px;
     margin: 15px 0px 15px 0px;
     display: flex;
     justify-content: space-between;
-
+    align-items: center;
 }
-.cust_disp_key {
+.rental_info {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 30px;
+}
+.rental_cust_info {
+    display: flex;
+    flex-direction: column;
+}
+.rental_disp_heading {
+    font-family: 'Permanent Marker', sans-serif;
+    font-size: 25px;
+    text-align: center;
+}
+.rental_disp_key {
     font-weight: bold;
+    color: black;
 }
-.cust_disp_val {
-    margin-bottom: 10px;
+.rental_disp_val {
+    margin-bottom: 5px;
+    color: black;
 }
-.cust_info_button {
+.rental_info_button {
     margin: 10px;
     border-style: none;
     border-radius: 5px;

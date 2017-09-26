@@ -40,7 +40,7 @@ class Create_Rental extends Component {
                             <div className="create_rental_title">CREATE RENTAL</div>
                             <div className="create_rental_category">Customer ID: </div>
                             <input placeholder={this.props.newRental.customerID} value={this.props.newRental.customerID} onChange={(e) => this.props.updateCustomerID(e.target.value)} />
-                            <button className="customer_lookup_button">Customer Lookup</button>
+                            <Link className="customer_lookup_button" to="/customer_lookup">Customer Lookup</Link>
 
                             <div className="create_rental_category">Start Date: </div>
                             <input className="input_box" type="date" onChange={(e) => this.props.updateStartDate(e.target.value)} />

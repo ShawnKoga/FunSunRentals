@@ -16,7 +16,7 @@ class Admin_Menu extends Component {
                     <Link className="home_sub" to="/new_rental" onClick={() => this.props.updateCustomerID(0)}>CREATE NEW</Link>
                     <Link className="home_sub" to="/close_rental">CLOSE RENTAL</Link>
                     <Link className="home_sub" to="/checkout_inventory">MANUAL INVENTORY CHECKOUT</Link>
-                    <li className="home_sub">LOOKUP</li>
+                    <Link className="home_sub" to="/rental_lookup">LOOKUP</Link>
                 </div>
 
                 <div className="admin_nav_link" onClick={() => this.props.toggleSubMenu('CUST')}>CUSTOMERS</div>
