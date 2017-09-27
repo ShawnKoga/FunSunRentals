@@ -12,6 +12,8 @@
     "massive": "^4.0.0",
     "moment": "^2.18.1",
     "ontime": "0.0.3",
+    "passport": "^0.4.0",
+    "passport-auth0": "^0.6.0",
     "pure-react-carousel": "^1.9.7",
     "react": "^15.6.1",
     "react-big-calendar": "^0.15.0",
@@ -33,5 +35,6 @@
   "devDependencies": {},
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "proxy": "http://localhost:8080"
 }

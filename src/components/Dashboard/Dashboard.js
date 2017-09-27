@@ -6,33 +6,33 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getActiveRentalCount, getPendingRentals, getAvailPB, getAvailKayaks, getAvailLifeJackets, getAvailRoofRacks, getUpcomingDue, getPastDue, quickClose, backWidgetButton, nextWidgetButton } from '../../ducks/dashReducer';
 import { updateCustomerID } from '../../ducks/createRentalReducer';
-// import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
-import axios from 'axios';
+// import axios from 'axios';
 
+// import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
+// import 'pure-react-carousel/dist/react-carousel.es.css';
 import './Dashboard.css';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
-// import 'pure-react-carousel/dist/react-carousel.es.css';
 
-let url = 'http://localhost:8080';
+// let url = 'http://localhost:8080';
 
-const ontime = require('ontime')
+// const ontime = require('ontime')
 
-ontime({
-    cycle: ['09:00:00']
-}, function (ot) {
-    axios.get(url + `/rentals/get_pending_today`)
-        .then(res => {
-            res.data.map((c, i) => {
-                axios.put(url + `/rentals/confirm_checkout`, c)
-                    .then(res => {
-                        alert(res.data)
-                    }
-                    )
-            })
-        });
-    ot.done()
-    return
-})
+// ontime({
+//     cycle: ['09:00:00']
+// }, function (ot) {
+//     axios.get(url + `/rentals/get_pending_today`)
+//         .then(res => {
+//             res.data.map((c, i) => {
+//                 axios.put(url + `/rentals/confirm_checkout`, c)
+//                     .then(res => {
+//                         alert(res.data)
+//                     }
+//                     )
+//             })
+//         });
+//     ot.done()
+//     return
+// })
 
 class Dashboard extends Component {
     componentDidMount() {
@@ -46,15 +46,17 @@ class Dashboard extends Component {
         this.props.getUpcomingDue();
     }
 
-    componentWillReceiveProps(nextProps) {
-        nextProps.getActiveRentalCount();
-        nextProps.getPastDue();
-        nextProps.getUpcomingDue();
-        nextProps.getPendingRentals();
-    }
+    // componentWillReceiveProps(nextProps) {
+    //     nextProps.getActiveRentalCount();
+    //     nextProps.getPastDue();
+    //     nextProps.getUpcomingDue();
+    //     nextProps.getPendingRentals();
+    // }
 
 
     render() {
+        console.log(this.props)
+
         BigCalendar.momentLocalizer(moment);
         var myEventsList = [];
 

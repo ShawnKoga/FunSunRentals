@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import Login from './components/Login/Login';
+import Landing from './components/Landing/Landing';
 import Dashboard from './components/Dashboard/Dashboard';
 import Create_Rental from './components/Rentals/Create_Rental'
 import CloseRental from './components/Rentals/CloseRental'
@@ -13,7 +13,7 @@ import Rental_Lookup from './components/Rentals/Rental_Lookup';
 
 export default(
     <Switch>
-       <Route path='/login' component={ Login } />
+       <Route exact path='/' component={ Landing } />
        <Route path='/dashboard' component={ Dashboard } />
        <Route path='/new_rental' component={ Create_Rental } />
        <Route path='/checkout_inventory' component={ CheckoutInventory } />

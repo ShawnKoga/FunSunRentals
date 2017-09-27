@@ -167,8 +167,8 @@ class Rental_Lookup extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    return state;
-}
+// function mapStateToProps(state) {
+//     return state;
+// }
 
 export default Rental_Lookup;

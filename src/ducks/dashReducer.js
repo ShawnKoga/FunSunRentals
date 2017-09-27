@@ -65,11 +65,9 @@ export default function dashReducer(state = initialState, action) {
             return Object.assign({}, state, { activeRentalCount: action.payload })
 
         case BACK_WIDGET_BUTTON:
-            console.log(state.widgetRotate)
             return Object.assign({}, state, {widgetRotate: state.widgetRotate - action.payload})
 
         case NEXT_WIDGET_BUTTON:
-            console.log(state.widgetRotate)
             return Object.assign({}, state, {widgetRotate: state.widgetRotate + action.payload})
 
         default:

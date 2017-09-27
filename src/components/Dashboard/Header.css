@@ -29,7 +29,6 @@
 .picture {
     background: lightgray;
     height: 50px;
-    width: 65px;
     border-radius: 50px;
 }
 .name_logout_container{
@@ -41,6 +40,15 @@
 .name {
     font-weight: bold;
     font-size: 20x;
+}
+.logout {
+    border-style: none;
+    background: none;
+    text-decoration: underline;
+    color: blue;
+    font-weight: bold;
+    font-size: 13px;
+    cursor: pointer;
 }
 
 /* MEDIA QUERIES */
@@ -81,7 +89,7 @@
         margin-right: 20px;
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: space-around;
     }
     .name_logout_container{
         display: flex;
@@ -92,6 +100,15 @@
     .name {
         font-weight: bold;
         font-size: 20px;
+    }
+    .logout {
+        border-style: none;
+        background: none;
+        text-decoration: underline;
+        color: blue;
+        font-weight: bold;
+        font-size: 13px;
+        cursor: pointer;
     }
 }
 

@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import svg from '../../assets/hamburger.svg';
 // import logo from '../../assets/FUTSRArtboard 1.png';
 import AdminMenu from './Admin_Menu';
+import { connect } from 'react-redux';
+import { getUserInfo } from '../../ducks/userReducer';
 import { Link } from 'react-router-dom';
 
 import './Admin_Menu.css';
 import './Header.css';
 
-export default class Header extends Component {
+class Header extends Component {
     constructor() {
         super();
 
@@ -20,6 +22,11 @@ export default class Header extends Component {
 
         this.toggleSubMenu = this.toggleSubMenu.bind(this);  
         this.toggleMenu = this.toggleMenu.bind(this);      
+    }
+
+    componentDidMount() {
+        this.props.getUserInfo()
+       
     }
 
     toggleMenu() {
@@ -47,6 +54,7 @@ export default class Header extends Component {
     }
 
     render() {
+        console.log('hey', this.props)
         return (
             <div>
                 <AdminMenu toggleMenu={this.toggleMenu}
@@ -60,10 +68,10 @@ export default class Header extends Component {
                     <img src={svg} className="hamburger" onClick={() => this.toggleMenu()} alt="hamburger" />
                     <Link to="/dashboard" className="header_title">Fun Under the Sun Rentals</Link>
                     <div className="credentials">
-                        <div className="picture"></div>
+                        <img className="picture" src={this.props.user.img} alt='' />
                         <div className="name_logout_container">
-                            <div className="name">ADAM GRIMALDO</div>
-                            <div className="logout">logout</div>
+                            <div className="name">{this.props.user ? this.props.user.username : 'nope'}</div>
+                            <a href={process.env.REACT_APP_LOGOUT}><button className="logout">LOGOUT</button></a>
                         </div>
                     </div>
                 </section>
@@ -71,3 +79,9 @@ export default class Header extends Component {
         )
     }
 }
+
+function mapStateToProps(state) {
+    return state.userReducer
+}
+
+export default connect (mapStateToProps, {getUserInfo})(Header);
