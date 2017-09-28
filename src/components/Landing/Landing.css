@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Permanent+Marker");
+@import url("https://fonts.googleapis.com/css?family=Rajdhani:semi-bold");
 
 /* Landing Header */
 .landing_header {
@@ -14,8 +15,8 @@
 }
 
 .landing_title {
-    font-family: 'Permanent Marker', sans-serif;
-    font-size: 20px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 25px;
     text-align: center;
     color: white;
     margin-left: 20px;
@@ -27,9 +28,16 @@
     background: none;
     font-size: 20px;
     color: white;
-    font-family: 'Overlock', sans-serif;
+    font-family: 'Rajdhani', sans-serif;
     cursor: pointer;
 }
+
+button:focus {
+    outline: none;
+    color: #FFDA00;
+}
+
+/* LANDING HERO */
 
 .fullscreen-bg {
     position: fixed;
@@ -52,6 +60,10 @@
 .landing_img_container {
     width: 100%;
     height: 100vh;
+    background-color: rgba(255, 253, 253, 0.1);
+    /* background-image: url('../../assets/dig_texture.jpeg');
+    background-size: cover;
+    background-blend-mode: lighten; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -60,30 +72,6 @@
 .landing_img {
     margin-left: 10px;
     height: 500px;
-}
-
-.App {
-    width: 100%;
-    height: 100vh;
-    background-image: url('../../assets/paddleboard_mountains.jpg');
-    background-size: cover;
-    background-position: center;
-    /* display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center; */
-    }
-
-.landing_transparency {
-    background: black;
-    /* opacity: 0.1; */
-    position: absolute;
-    z-index: 1;
-    margin: 0%;
-}
-
-button:focus {
-    outline: none;
 }
 
 #background-video{  
@@ -95,4 +83,231 @@ button:focus {
     position: fixed;
 }
 
-/* MEDIA QUERIES */
+/* ABOUT SECTION */
+.about_section {
+    width: 100%;
+    height: 100vh;
+    padding-top: 85px;
+    background: linear-gradient(to top left, #98BBB3 20%, #ffffff 90%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.about_us_header {
+    width: 100%;
+    height: 10%;
+    /* margin-top: 85px; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.about_heading {
+    margin-left: 30px;
+    font-family: 'Permanent Marker', sans-serif;
+    font-size: 63px;
+    color: black;
+    text-shadow: 2px 2px #646464;
+}
+
+.about_style_line {
+    width: 52%;
+    margin-right: 30px;
+    border-top-style: solid;
+    border-color: black;
+    border-width: 5px;
+    box-shadow: 2px 2px #646464;
+}
+
+.about_text {
+    /* background: pink; */
+    width: 90%;
+    height: 70%;
+    margin-top: 15px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 45px;
+    text-align: center;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* RESERVATION SECTION */
+.reservation_section{
+    background-image: url('../../assets/lake-kajak-kayak.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: bottom;
+    width: 100%;
+    height: 100vh;
+    padding-top: 85px;
+}
+
+.reservation_header{
+    width: 100%;
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.reservation_style_line{
+    width: 55%;
+    margin-left: 30px;
+    border-top-style: solid;
+    border-color: white;
+    border-width: 5px;
+    box-shadow: 0px 0px 5px #000000;        
+}
+
+.reservation_heading {
+    margin-right: 30px;
+    font-family: 'Permanent Marker', sans-serif;
+    font-size: 63px;
+    color: white;
+    text-shadow: 0px 0px 5px #000000;
+}
+
+/* CONTACT US SECTION */
+.contact_us_section{
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(to top left, #ffffff 20%, #FAE997 90%);    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contact_header{
+    width: 100%;
+    height: 10%;
+    margin-top: 85px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.contact_heading {
+    margin-left: 30px;
+    font-family: 'Permanent Marker', sans-serif;
+    font-size: 63px;
+    color: white;
+    text-shadow: 2px 2px #000000;
+}
+
+.contact_style_line{
+    width: 64%;
+    margin-right: 30px;
+    border-top-style: solid;
+    border-color: white;
+    border-width: 5px;
+    box-shadow: 2px 2px #000000;
+}
+
+.contact_module_container{
+    width: 100%;
+    height: 70%;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.contact_info_container {
+    background: lightgray;
+    width: 30%;
+    height: 100%;
+    border-radius: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 2px 2px #000000;    
+}
+
+.phone_email_container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 40px;
+}
+
+.phone_container {
+    width: 70%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.phone_icon {
+    font-size: 50px;
+    padding-bottom: 20px;
+}
+
+.email_container {
+    width: 75%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 20px 0px 20px 0px;
+}
+
+.email_icon {
+    font-size: 50px;
+    padding-bottom: 30px;
+    margin-right: 10px;
+}
+
+.social_container {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.location_text_heading {
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.location_text{
+    font-size: 18px;
+}
+
+.location_map {
+    width: 85%;
+    height: 75%;
+    margin-top: 15px;
+    border-style: none;
+    border-radius: 15px;
+    box-shadow: 0px 1px 15px #000000;    
+}
+
+.name_email_box {
+    width: 80%;
+    height: 5%;
+    margin-bottom: 10px;
+}
+
+.message_box {
+    width: 80%;
+    height: 30%;
+    margin-bottom: 10px;
+}
+
+.contact_select_box {
+    width: 80%;
+    border-style: none;
+    box-shadow: 0px 1px 5px #000000;    
+}
+
+.contact_submit_button {
+    width: 100px;
+    height: 30px;
+    border-style: none;
+    border-radius: 5px;
+    background: lightgreen;
+    box-shadow: 0px 1px 5px #000000;
+    margin-top: 15px;      
+}

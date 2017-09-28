@@ -57,7 +57,7 @@
         visibility: visible;
         text-decoration: none;
         font-size: 30px;
-        font-family: 'Permanent Marker', sans-serif;
+        font-family: 'Rajdhani', sans-serif;
         color: black;
     }
 }
@@ -65,7 +65,7 @@
 @media(min-width:1000px) {
     .header_title {
         font-size: 50px;
-        font-family: 'Permanent Marker', sans-serif;
+        font-family: 'Rajdhani', sans-serif;
         color: black;
     }
 }
