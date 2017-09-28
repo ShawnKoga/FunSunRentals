@@ -28,6 +28,20 @@ export default class Create_Customer extends Component {
         this.clearFields = this.clearFields.bind(this)
     }
 
+    componentDidMount(){
+        axios.get('/auth/authorized').then(user => {
+            console.log('the response user', user)
+            if(user.data.user === false) {
+                this.props.history.push('/')
+            } else {
+                console.log('did this work?!?!?!?!?')
+                this.setState({
+                    user: user.data
+                })
+            }
+        })
+    }
+
     updateFirstName(e) {
         this.setState({
             firstName: e

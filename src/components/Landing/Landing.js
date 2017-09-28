@@ -27,7 +27,7 @@ export default class Login extends Component {
                 </div>
 
                 <div className="fullscreen-bg">
-                    <video loop mute autoPlay class="fullscreen-bg_video" type="video/mp4">
+                    <video loop autoPlay className="fullscreen-bg_video" type="video/mp4">
                         <source src={lakeVideo} type="video/mp4" />
                     </video>
                 </div>
@@ -65,7 +65,7 @@ export default class Login extends Component {
                     <section className="contact_module_container">
                         <div className="contact_info_container">
                             <div className="phone_container">
-                                <div className="phone_icon">&#128241;</div>
+                                <span className="phone_icon" role="img">&#128241;</span>
                                 <div className="phone_email_container">
                                     <div className="location_text_heading">Phone:</div>
                                     <div className="location_text">(818)294-1268</div>
@@ -73,7 +73,7 @@ export default class Login extends Component {
                             </div>
 
                             <div className="email_container">
-                                <div className="email_icon">&#128231;</div>
+                                <span className="email_icon" role="img">&#128231;</span>
                                 <div className="phone_email_container">
                                     <div className="location_text_heading">Email:</div>
                                     <div className="location_text">fununderthesun801@gmail.com</div>

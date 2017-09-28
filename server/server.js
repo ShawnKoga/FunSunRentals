@@ -65,6 +65,16 @@ passport.deserializeUser(function (user, done) {
     done(null, user)
 })
 
+app.get('/auth/authorized', (req, res) => {
+    console.log('here we are', req.user)
+    if(!req.user) {
+        console.log('first statement')
+        return res.send({user: false})
+    } else {
+        return res.status(200).send(req.user)
+    }
+});
+
 app.get('/auth', passport.authenticate('auth0'));
 
 app.get('/auth/callback', passport.authenticate('auth0', {

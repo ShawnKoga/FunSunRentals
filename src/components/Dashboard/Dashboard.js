@@ -6,36 +6,50 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getActiveRentalCount, getPendingRentals, getAvailPB, getAvailKayaks, getAvailLifeJackets, getAvailRoofRacks, getUpcomingDue, getPastDue, quickClose, backWidgetButton, nextWidgetButton } from '../../ducks/dashReducer';
 import { updateCustomerID } from '../../ducks/createRentalReducer';
-// import axios from 'axios';
+import axios from 'axios';
 
 // import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
 // import 'pure-react-carousel/dist/react-carousel.es.css';
 import './Dashboard.css';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 
-// let url = 'http://localhost:8080';
+let url = 'http://localhost:8080';
 
-// const ontime = require('ontime')
+const ontime = require('ontime')
 
-// ontime({
-//     cycle: ['09:00:00']
-// }, function (ot) {
-//     axios.get(url + `/rentals/get_pending_today`)
-//         .then(res => {
-//             res.data.map((c, i) => {
-//                 axios.put(url + `/rentals/confirm_checkout`, c)
-//                     .then(res => {
-//                         alert(res.data)
-//                     }
-//                     )
-//             })
-//         });
-//     ot.done()
-//     return
-// })
+ontime({
+    cycle: ['09:00:00']
+}, function (ot) {
+    axios.get(url + `/rentals/get_pending_today`)
+        .then(res => {
+            res.data.map((c, i) => {
+                axios.put(url + `/rentals/confirm_checkout`, c)
+                    .then(res => {
+                        alert(res.data)
+                    }
+                    )
+            })
+        });
+    ot.done()
+    return
+})
+
+
 
 class Dashboard extends Component {
     componentDidMount() {
+        axios.get('/auth/authorized').then(user => {
+            console.log('the response user', user)
+            if(user.data.user === false) {
+                this.props.history.push('/')
+            } else {
+                console.log('did this work?!?!?!?!?')
+                this.setState({
+                    user: user.data
+                })
+            }
+        })
+
         this.props.getActiveRentalCount();
         this.props.getPendingRentals();
         this.props.getAvailPB();

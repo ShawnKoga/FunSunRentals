@@ -11,6 +11,18 @@ let url = 'http://localhost:8080';
 class Create_Rental extends Component {
 
     componentDidMount() {
+        axios.get('/auth/authorized').then(user => {
+            console.log('the response user', user)
+            if(user.data.user === false) {
+                this.props.history.push('/')
+            } else {
+                console.log('did this work?!?!?!?!?')
+                this.setState({
+                    user: user.data
+                })
+            }
+        })
+        
         this.props.resetRentalInfo();
     }
 

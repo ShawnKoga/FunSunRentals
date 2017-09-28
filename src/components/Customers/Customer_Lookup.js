@@ -20,6 +20,19 @@ class Customer_Lookup extends Component {
             customerDisplay: []
         }
     }
+    componentDidMount(){
+        axios.get('/auth/authorized').then(user => {
+            console.log('the response user', user)
+            if(user.data.user === false) {
+                this.props.history.push('/')
+            } else {
+                console.log('did this work?!?!?!?!?')
+                this.setState({
+                    user: user.data
+                })
+            }
+        })
+    }
     updateFirstName(e) {
         this.setState({
             firstName: e

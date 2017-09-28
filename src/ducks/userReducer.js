@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-let url = 'http://localhost:8080';
+// let url = 'http://localhost:8080';
 
 //SET INITIAL STATE
 const initialState = {
