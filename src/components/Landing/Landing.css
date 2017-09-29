@@ -197,9 +197,10 @@ button:focus {
 }
 
 .request_info_container {
+    /* background: red; */
     padding: 15px;
     width: 95%;
-    height: 40%;
+    height: 65%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -224,6 +225,7 @@ button:focus {
     border-style: solid;
     border-width: 1px;
     border-color: gray;
+    font-size: 14px;
 }
 
 .req_address_box{
@@ -232,21 +234,62 @@ button:focus {
     border-style: solid;
     border-width: 1px;
     border-color: gray;
+    font-size: 14px;
 }
 
 .req_state_box {
     border-style: none;
-    width: 15%;
+    width: 20%;
     height: 25px;
     border-style: solid;
     border-width: 1px;
     border-color: gray;
+    font-size: 14px;
 }
 
 .req_zip_box {
     border-style: solid;
     border-width: 1px;
     border-color: gray;
+    font-size: 14px;
+}
+
+.is_this_you_container {
+    /* background: red; */
+    width: 95%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.step_two_title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 40px;
+    margin-bottom: -15px;
+}
+
+.step_two_info_container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.step_two_name {
+    font-weight: bold;
+    font-size: 23px;
+}
+
+.step_two_key {
+    /* font-weight: bold; */
+    font-size: 18px;
+}
+
+.step_two_val {
+    font-weight: bold;    
+    font-size: 20px;
+    margin-bottom: 2px;
 }
 
 .req_divider_line {
@@ -270,7 +313,7 @@ button:focus {
     border-radius: 5px;
     background: lightgreen;
     width: 150px;
-    height: 50px;
+    height: 35px;
     font-weight: bold;
     font-size: 15px;
     margin-bottom: 15px;
@@ -283,10 +326,10 @@ button:focus {
     border-radius: 5px;
     background: lightcoral;
     width: 150px;
-    height: 50px;
+    height: 35px;
     font-weight: bold;
     font-size: 15px;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
     box-shadow: 0px 0px 5px #000000;
     cursor: pointer;  
 }
@@ -303,6 +346,14 @@ button:focus {
     border-width: 3px;
 }
 
+.weather_getter_container {
+    width: 100%;
+    height: 35%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .weather_title {
     font-family: 'Rajdhani', sans-serif;
     font-size: 30px;
@@ -311,6 +362,7 @@ button:focus {
 .weather_row{
     display: flex;
     margin-bottom: .3rem;
+    align-items: center;
 }
 
 .weather_cat {
@@ -319,11 +371,29 @@ button:focus {
 
 .weather_box {
     border-style: none;
+    background: white;
+    height: 1.5rem;
+    width: 15rem;
+    box-shadow: 0px 0px 5px #000000;   
+    margin-bottom: .5rem;
+    font-size: 16px;
+}
+
+.get_weather_button {
+    border-style: none;
+    background: #9CFFED;
+    width: 10rem;
+    height: 2rem;
+    border-radius: .25rem;
+    box-shadow: 0px 0px 5px #000000;
+    margin: .5rem;
+    font-weight: bold;
 }
 
 .forecast_container {
     padding-top: 15px;
     width: 100%;
+    height: 65%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -331,7 +401,7 @@ button:focus {
 }
 
 .forecast_day_plat {
-    background-color: rgb(255, 255, 255);
+    background: linear-gradient(to top left, #ffffff 0%, #C7FFF5 100%);    
     border-radius: 1rem;
     width: 85%;
     height: 95%;
