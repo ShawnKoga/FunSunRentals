@@ -231,13 +231,13 @@ export default class Landing extends Component {
             <main>
                 {/* HEADER */}
                 <section className="landing_header">
-                    <div className="landing_title">
+                    <a  href="#landing" className="landing_title">
                         <div>FUN UNDER THE SUN<br />RENTALS</div>
-                    </div>
+                    </a>
                     <div>
-                        <a className="landing_header_button">ABOUT US</a>
-                        <a><button className="landing_header_button">RENT</button></a>
-                        <a><button className="landing_header_button">CONTACT US</button></a>
+                        <a href="#about_us" className="landing_header_button">ABOUT US</a>
+                        <a href="#request_time" className="landing_header_button">RENT</a>
+                        <a href="#contact" className="landing_header_button">CONTACT US</a>
                         <a href={process.env.REACT_APP_LOGIN}><button className="landing_header_button">LOGIN</button></a>
                     </div>
                 </section>

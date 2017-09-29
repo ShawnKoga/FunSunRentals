@@ -78,8 +78,8 @@ app.get('/auth/authorized', (req, res) => {
 app.get('/auth', passport.authenticate('auth0'));
 
 app.get('/auth/callback', passport.authenticate('auth0', {
-    successRedirect: 'http://localhost:3000/#/dashboard',
-    failureRedirect: 'http://localhost:3000/#/'
+    successRedirect: 'http://localhost:3000/dashboard',
+    failureRedirect: 'http://localhost:3000/'
 }));
 
 app.get('/auth/me', (req, res) => {
@@ -95,7 +95,7 @@ app.get('/auth/me', (req, res) => {
 
 app.get('/auth/logout', (req, res) => {
     req.logOut()
-    return res.redirect(302, 'http://localhost:3000/#/');
+    return res.redirect(302, 'http://localhost:3000/');
 })
 
 
@@ -123,9 +123,12 @@ app.post('/rentals/create_new_rental', controller.createNewRental)
 app.put('/rentals/find_rental', controller.findRental)
 app.put('/rentals/close_rental', controller.closeRental)
 
-
 app.get('/rentals/get_pending_today', controller.getPendingToday)
 
+app.get('*', (req, res)=>{
+    console.log("None Met");
+    res.sendFile(path.join(__dirname, '..','build','index.html'));
+  })
 
 let PORT = 8080;
 app.listen(PORT, () => {

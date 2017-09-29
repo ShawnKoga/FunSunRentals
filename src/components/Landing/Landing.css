@@ -20,6 +20,7 @@
     text-align: center;
     color: white;
     margin-left: 20px;
+    text-decoration: none;
 }
 
 .landing_header_button {
@@ -30,6 +31,7 @@
     color: white;
     font-family: 'Rajdhani', sans-serif;
     cursor: pointer;
+    text-decoration: none;
 }
 
 button:focus {

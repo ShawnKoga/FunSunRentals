@@ -4,15 +4,15 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-import { HashRouter } from 'react-router-dom'
+import { BrowserRouter } from 'react-router-dom'
 import { Provider } from 'react-redux';
 import store from './store';
 
 ReactDOM.render(
-    <HashRouter>
+    <BrowserRouter>
         <Provider store={store}>
             <App />
         </Provider>
-    </HashRouter>
+    </BrowserRouter>
     , document.getElementById('root'));
 registerServiceWorker();
