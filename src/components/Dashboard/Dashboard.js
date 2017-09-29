@@ -4,7 +4,7 @@ import Header from './Header';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getActiveRentalCount, getPendingRentals, getAvailPB, getAvailKayaks, getAvailLifeJackets, getAvailRoofRacks, getUpcomingDue, getPastDue, quickClose, backWidgetButton, nextWidgetButton } from '../../ducks/dashReducer';
+import { getActiveRentalCount, getPendingRentals, getAvailPB, getAvailKayaks, getAvailLifeJackets, getAvailRoofRacks, getUpcomingDue, getPastDue, quickClose, backWidgetButton, nextWidgetButton, quickOpen } from '../../ducks/dashReducer';
 import { updateCustomerID } from '../../ducks/createRentalReducer';
 import axios from 'axios';
 
@@ -164,6 +164,7 @@ class Dashboard extends Component {
                     </div>
                     <div>
                         <div className="rental_card_key">Rental #:&nbsp;</div> <div className="rental_card_val">{c.rental_id}</div>
+                        <button className="quick_open_button" onClick={() => {this.props.quickOpen(c)}}>Open Rental</button>
                         <button className="quick_close_button" onClick={() => { this.props.quickClose(closeObj) }}>Close Rental</button>
                     </div>
                 </div>
@@ -248,4 +249,4 @@ function mapStateToProps(state) {
     return state.dashboard
 }
 
-export default connect(mapStateToProps, { getActiveRentalCount, getPendingRentals, getAvailPB, getAvailKayaks, getAvailLifeJackets, getAvailRoofRacks, getUpcomingDue, getPastDue, quickClose, updateCustomerID, backWidgetButton, nextWidgetButton })(Dashboard)
+export default connect(mapStateToProps, { getActiveRentalCount, getPendingRentals, getAvailPB, getAvailKayaks, getAvailLifeJackets, getAvailRoofRacks, getUpcomingDue, getPastDue, quickClose, updateCustomerID, backWidgetButton, nextWidgetButton, quickOpen })(Dashboard)

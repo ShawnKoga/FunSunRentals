@@ -31,6 +31,8 @@ const GET_PAST_DUE = "GET_PAST_DUE";
 const GET_PAST_DUE_FULFILLED = "GET_PAST_DUE_FULFILLED";
 const QUICK_CLOSE = "QUICK_CLOSE";
 const QUICK_CLOSE_FULFILLED = "QUICK_CLOSE";
+const QUICK_OPEN = "QUICK_OPEN";
+const QUICK_OPEN_FULFILLED = "QUICK_OPEN";
 const BACK_WIDGET_BUTTON = "BACK_WIDGET_BUTTON";
 const NEXT_WIDGET_BUTTON = "NEXT_WIDGET_BUTTON";
 
@@ -63,6 +65,9 @@ export default function dashReducer(state = initialState, action) {
 
         case QUICK_CLOSE_FULFILLED:
             return Object.assign({}, state, { activeRentalCount: action.payload })
+
+        case QUICK_OPEN_FULFILLED:
+            return Object.assign({}, state, {})
 
         case BACK_WIDGET_BUTTON:
             return Object.assign({}, state, {widgetRotate: state.widgetRotate - action.payload})
@@ -136,6 +141,14 @@ export function quickClose(id) {
     return {
         type: QUICK_CLOSE,
         payload: dashboardService.quickClose(id)
+    }
+}
+
+export function quickOpen(obj) {
+    console.log('FIRE AWAY', obj)
+    return {
+        type: QUICK_OPEN,
+        payload: dashboardService.quickOpen(obj)
     }
 }
 

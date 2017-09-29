@@ -1,8 +1,9 @@
 @import url("https://fonts.googleapis.com/css?family=Permanent+Marker");
 
 .customer_lookup_main_container {
-    background-image: url('../../assets/paddle_board_shop.jpg');
+    background-image: url('../../assets/paddleboard-sunset-silhouette.jpg');
     background-size: cover;
+    background-position: center;
     width: 100%;
     height: 100vh;
     display: flex;

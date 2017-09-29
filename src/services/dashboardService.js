@@ -64,3 +64,11 @@ export function quickClose(id) {
         return res.data
     })
 }
+
+export function quickOpen(obj) {
+    console.log('this is the obj to open', obj)
+    return axios.put(`${url}/rentals/confirm_checkout`, obj)
+    .then(res => {
+        return res.data
+    })
+}
