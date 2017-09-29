@@ -15,6 +15,14 @@ module.exports = {
         .catch(err => {res.status(500).send()})        
     },
 
+    checkCustomer: (req, res) => {
+        const dbInstance = req.app.get('db');
+        const {firstName, lastName, phone} = req.body;
+        dbInstance.customers.customerChecker(firstName, lastName, phone)
+        .then(customer => res.status(200).send(customer))
+        .catch(err => {res.status(500).send()})
+    },
+
     createNewCustomer: (req, res) => {
         const dbInstance = req.app.get('db');
         const {firstName, lastName, email, phone, address, city, state, zip} = req.body;

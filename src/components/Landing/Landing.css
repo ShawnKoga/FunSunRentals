@@ -70,8 +70,8 @@ button:focus {
 }
 
 .landing_img {
-    margin-left: 10px;
-    height: 500px;
+    margin-left: .75rem;
+    height: 32rem;
 }
 
 #background-video{  
@@ -176,7 +176,7 @@ button:focus {
 }
 
 .request_container {
-    background-color: rgba(255, 255, 255, 0.70);    
+    background-color: rgba(255, 255, 255, 0.85);    
     width: 90%;
     height: 70%;
     border-radius: 15px;
@@ -190,8 +190,6 @@ button:focus {
 .main_request_container {
     width: 60%;
     height: 100%;
-    border-radius: 15px;
-    box-shadow: 0px 0px 5px #000000;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -245,12 +243,26 @@ button:focus {
     border-color: gray;
 }
 
+.req_zip_box {
+    border-style: solid;
+    border-width: 1px;
+    border-color: gray;
+}
+
 .req_divider_line {
     width: 95%;
     border-top-style: solid;
     border-color: darkgray;
     border-width: 3px;
     /* box-shadow: 2px 2px #000000; */
+}
+
+.show_req {
+    visibility: visible
+}
+
+.hide_req {
+    display: none
 }
 
 .req_submit_button {
@@ -266,10 +278,75 @@ button:focus {
     cursor: pointer;  
 }
 
+.req_no_button {
+    border-style: none;
+    border-radius: 5px;
+    background: lightcoral;
+    width: 150px;
+    height: 50px;
+    font-weight: bold;
+    font-size: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0px 0px 5px #000000;
+    cursor: pointer;  
+}
+
 .weather_checker_container {
-    background: red;
+    /* background: red; */
     width: 40%;
-    height: 100%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-left-style: solid;
+    border-color: darkgray;
+    border-width: 3px;
+}
+
+.weather_title {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 30px;
+}
+
+.weather_row{
+    display: flex;
+    margin-bottom: .3rem;
+}
+
+.weather_cat {
+    font-weight: bold;
+}
+
+.weather_box {
+    border-style: none;
+}
+
+.forecast_container {
+    padding-top: 15px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: scroll;
+}
+
+.forecast_day_plat {
+    background-color: rgb(255, 255, 255);
+    border-radius: 1rem;
+    width: 85%;
+    height: 95%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    box-shadow: 0px 0px 5px #000000;    
+}
+
+.forecast_row {
+    display: flex;
+    justify-content: center;
+}
+
+.forecast_title {
+    font-weight: bold
 }
 
 

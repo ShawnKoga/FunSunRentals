@@ -102,6 +102,7 @@ app.get('/auth/logout', (req, res) => {
 //CUSTOMER ENDPOINTS
 app.get('/customers/get_all', controller.getAllCustomers)
 app.put('/customers/find_customer', controller.findCustomer)
+app.put('/customers/check_customer', controller.checkCustomer)
 app.post('/customers/create_new_customer', controller.createNewCustomer)
 
 //INVENTORY ENDPOINTS

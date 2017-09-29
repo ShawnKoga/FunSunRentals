@@ -114,23 +114,6 @@ export default class Create_Customer extends Component {
     }
 
     render() {
-        // const newCustomer = this.state.customerDisplay.map((c, i) => {
-        //     return (
-        //         <div key={i} className={"new_customer_card"}>
-        //             <div className="cust_creator_heading">CUSTOMER CREATED:</div>
-        //             <div>Customer ID: {c.customer_id}</div>
-        //             <div>Name: {c.firstname} {c.lastname}</div>
-        //             <div>Phone: {c.phone}</div>
-        //             <div>Email: {c.email}</div>
-        //             <div>Address: {c.address}</div>
-        //             <div>City: {c.city}</div>
-        //             <div>State: {c.state}</div>
-        //             <div>Zip: {c.zip}</div>
-        //             <Link to="/dashboard"><button>Done</button></Link>
-        //             <Link to="/new_rental"><button>Create Rental</button></Link>
-        //         </div>
-        //     )
-        // })
 
         return (
             <div>
