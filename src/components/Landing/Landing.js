@@ -4,9 +4,11 @@ import logo from '../../assets/FUTSRArtboard 1.svg';
 import lakeVideo from '../../assets/Lake - 913.mp4';
 import { SocialIcon } from 'react-social-icons';
 import axios from 'axios';
-import svg from '../../assets/hamburger.svg';
+// import svg from '../../assets/hamburger.svg';
+
 
 let url = 'http://localhost:8080';
+
 
 export default class Landing extends Component {
     constructor() {
@@ -494,7 +496,7 @@ export default class Landing extends Component {
                         <section className="contact_module_container">
                             <div className="contact_info_container">
                                 <div className="phone_container">
-                                    <span className="phone_icon" role="img">&#128241;</span>
+                                    <span className="phone_icon" role="img" aria-label="phone_emoji">&#128241;</span>
                                     <div className="phone_email_container">
                                         <div className="location_text_heading">Phone:</div>
                                         <div className="location_text">(818)294-1268</div>
@@ -502,7 +504,7 @@ export default class Landing extends Component {
                                 </div>
 
                                 <div className="email_container">
-                                    <span className="email_icon" role="img">&#128231;</span>
+                                    <span className="email_icon" role="img" aria-label="email_emoji">&#128231;</span>
                                     <div className="phone_email_container">
                                         <div className="location_text_heading">Email:</div>
                                         <div className="location_text">fununderthesun801@gmail.com</div>

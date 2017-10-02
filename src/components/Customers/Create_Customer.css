@@ -173,6 +173,18 @@
     margin-top: 40px;
 }
 
+.show_new_card {
+    transform: translateY(0%);
+    transition: .35s ease-in-out;
+    visibility: visible;
+}
+
+.hide_new_card {
+    transform: translateY(-100%);
+    transition: .35s ease-in-out;
+    display: none;
+}
+
 .close_card_button_container {
     width: 100%;
     height: 10%;

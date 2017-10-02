@@ -9,7 +9,7 @@ class New_Customer_Card extends Component {
             return (
                 <div key={i} className="new_customer_card">
                     <div className="close_card_button_container">
-                        <button className="close_card_button" onClick={() => { this.props.resetCustCard(), this.props.clearFields() }}>&#10006;</button>
+                        <button className="close_card_button" onClick={() => { this.props.clearFields() }}>&#10006;</button>
                     </div >
                     <div className="cust_info">
                         <div className="cust_creator_heading">CUSTOMER CREATED:</div>
@@ -46,47 +46,8 @@ class New_Customer_Card extends Component {
             )
         })
         return (
-            <div className="new_customer_container">
+            <div className={this.props.showCustCard ? "new_customer_container show_new_card" : "new_customer_container hide_new_card"}>
                 {newCustomer}
-
-                {/* <div className="new_customer_card">
-                    <div className="close_card_button_container">
-                        <Link to="/new_customer">
-                            <button className="close_card_button">&#10006;</button>
-                        </Link>
-                    </div>
-                    <div className="cust_info">
-                        <div className="cust_creator_heading">CUSTOMER CREATED:</div>
-                        <section className="new_cust_stat_list">
-                            <div className="new_cust_stat_container">
-                                <div className="cust_card_key">Customer ID:{' '}</div><div className="cust_card_stats">3</div>
-                            </div>
-                            <div className="new_cust_stat_container">
-                                <div className="cust_card_key">Name:</div><div className="cust_card_stats">3</div>
-                            </div>
-                            <div className="new_cust_stat_container">
-                                <div className="cust_card_key">Phone:</div><div className="cust_card_stats">3</div>
-                            </div>
-                            <div className="new_cust_stat_container">
-                                <div className="cust_card_key">Email:</div><div className="cust_card_stats">3</div>
-                            </div>
-                            <div className="new_cust_stat_container">
-                                <div className="cust_card_key">Address:</div><div className="cust_card_stats">3</div>
-                            </div>
-                            <div className="new_cust_stat_container">
-                                <div className="cust_card_key">City:</div><div className="cust_card_stats">3 </div>
-                            </div>
-                            <div className="new_cust_stat_container">
-                                <div className="cust_card_key">State:</div><div className="cust_card_stats">3</div>
-                            </div>
-                            <div className="new_cust_stat_container">
-                                <div className="cust_card_key">Zip:</div><div className="cust_card_stats">3</div>
-                            </div>
-                        </section>
-                        <Link to="/dashboard"><button className="cust_card_done_button">Back To Dash</button></Link>
-                        <Link to="/new_rental"><button className="cust_card_rental_button">Create Rental</button></Link>
-                    </div>
-                </div> */}
             </div>
         )
     }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Header from '../Dashboard/Header';
-import axios from 'axios';
+// import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './EditRental.css';
 

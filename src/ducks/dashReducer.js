@@ -10,27 +10,7 @@ let initialState = {
     upcomingDueRentals: [],
     pendingRentals: [],
     widgetRotate: 1,
-    rentalToEdit: [
-        // {
-        //     address: "333 Nurk St",
-        //     city: "Portland",
-        //     customer_id: 45,
-        //     email: "nurk@blazers.com",
-        //     end_date: "2017-10-03T06:00:00.000Z",
-        //     firstname: "Jusuf",
-        //     kayaks: 0,
-        //     lastname: "Nurkic",
-        //     lifejackets: 0,
-        //     paddleboards: 1,
-        //     phone: "1111111111",
-        //     rental_id: 141,
-        //     roofracks: 0,
-        //     start_date: "2017-10-02T06:00:00.000Z",
-        //     state: "OR",
-        //     status: "PENDING",
-        //     zip: 77777
-        // }
-    ]
+    rentalToEdit: []
 }
 
 //CONSTANTS

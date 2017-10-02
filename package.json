@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "anchor-hash-scroll": "^0.1.1",
     "axios": "^0.16.2",
     "body-parser": "^1.18.0",
     "cors": "^2.8.4",

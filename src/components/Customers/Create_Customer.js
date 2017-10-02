@@ -24,7 +24,7 @@ export default class Create_Customer extends Component {
             showCustCard: false
         }
 
-        this.resetCustCard = this.resetCustCard.bind(this)
+        // this.resetCustCard = this.resetCustCard.bind(this)
         this.clearFields = this.clearFields.bind(this)
     }
 
@@ -97,12 +97,15 @@ export default class Create_Customer extends Component {
             alert('Please fill out customer info!')
         }
     }
-    resetCustCard() {
+    // resetCustCard() {
+    //     this.setState({
+    //         customerDisplay: []
+    //     })
+    // }
+    clearFields() {
         this.setState({
             customerDisplay: []
         })
-    }
-    clearFields() {
         document.getElementById('textfield1').value = '';
         document.getElementById('textfield2').value = '';
         document.getElementById('textfield3').value = '';
@@ -121,7 +124,8 @@ export default class Create_Customer extends Component {
                 <div className="cust_creator_container">
                     <NewCustomerCard resetCustCard={this.resetCustCard}
                         clearFields={this.clearFields}
-                        customerDisplay={this.state.customerDisplay} />
+                        customerDisplay={this.state.customerDisplay}
+                        showCustCard={this.state.showCustCard} />
 
                     <section className="cust_creator_form">
                         <div className="cust_creator_heading">Name:</div>
