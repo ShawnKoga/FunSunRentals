@@ -10,6 +10,7 @@ import Add_Inventory from './components/Inventory/Add_Inventory';
 import CheckoutInventory from './components/Rentals/CheckoutInventory';
 import Customer_Lookup from './components/Customers/Customer_Lookup';
 import Rental_Lookup from './components/Rentals/Rental_Lookup';
+import EditRental from './components/Rentals/EditRental';
 
 export default(
     <Switch>
@@ -22,5 +23,6 @@ export default(
        <Route path='/add_inventory' component={ Add_Inventory } />
        <Route path='/customer_lookup' component={ Customer_Lookup } />
        <Route path='/rental_lookup' component={ Rental_Lookup } />
+       <Route path='/edit_rental' component={ EditRental } />
     </Switch>
 )

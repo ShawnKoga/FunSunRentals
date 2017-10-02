@@ -84,22 +84,26 @@
     overflow: scroll;
 }
 .customer_display_card {
+    background-image: url('../../assets/FUTSRArtboard 1.png');
+    background-size: contain;
+    background-blend-mode: overlay;
+    background-position: center;
+    background-repeat: no-repeat;
     width: 25%;
-    height: 85%;
-    background: silver;
+    height: 80%;
+    background-color: lightgray;
     box-shadow: 0px 0px 5px #000000;      
     border-radius: 25px;
     padding: 15px;
     margin: 15px 0px 15px 0px;
     display: flex;
     justify-content: space-between;
-
 }
 .cust_disp_key {
     font-weight: bold;
 }
 .cust_disp_val {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 .cust_info_button {
     margin: 10px;
@@ -112,4 +116,28 @@
     font-size: 12px;
     box-shadow: 0px 0px 5px #000000;  
     cursor: pointer;  
+}
+
+/* MEDIA QUERIES */
+
+@media(min-width:1800px) {
+    .cust_disp_key {
+        font-size: 23px;
+    }
+    .cust_disp_val {
+        margin-bottom: 15px;
+        font-size: 23px;
+    }
+    .cust_info_button {
+        margin: 10px;
+        border-style: none;
+        border-radius: 5px;
+        background: lightgreen;
+        width: 100px;
+        height: 30px;
+        font-weight: bold;
+        font-size: 12px;
+        box-shadow: 0px 0px 5px #000000;  
+        cursor: pointer;  
+    }
 }

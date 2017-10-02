@@ -72,3 +72,10 @@ export function quickOpen(obj) {
         return res.data
     })
 }
+
+export function quickEdit(num) {
+    return axios.get(`${url}/rentals/get_rental/${num}`)
+    .then(res => {
+        return res.data
+    })
+}

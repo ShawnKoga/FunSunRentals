@@ -52,12 +52,12 @@ passport.use(new Auth0Strategy({
 }));
 
 passport.serializeUser(function (user, done) {
-    console.log('serialize', user)
+    // console.log('serialize', user)
     done(null,user)
 })
 
 passport.deserializeUser(function (user, done) {
-    console.log('deserialize', user)
+    // console.log('deserialize', user)
     
     // app.get('db').users.find_session_user(user.id).then(user => {
     //     return done(null, user[0]);
@@ -66,9 +66,9 @@ passport.deserializeUser(function (user, done) {
 })
 
 app.get('/auth/authorized', (req, res) => {
-    console.log('here we are', req.user)
+    // console.log('here we are', req.user)
     if(!req.user) {
-        console.log('first statement')
+        // console.log('first statement')
         return res.send({user: false})
     } else {
         return res.status(200).send(req.user)
@@ -83,12 +83,12 @@ app.get('/auth/callback', passport.authenticate('auth0', {
 }));
 
 app.get('/auth/me', (req, res) => {
-    console.log('start', req.user)
+    // console.log('start', req.user)
     if(!req.user) {
-        console.log('FAIL', req.user)
+        // console.log('FAIL', req.user)
         return res.status(404).send('User not found')
     } else {
-        console.log('yoyoyo',req.user)
+        // console.log('yoyoyo',req.user)
         return res.status(200).send(req.user);
     }
 })

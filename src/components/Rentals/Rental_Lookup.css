@@ -133,3 +133,29 @@
     box-shadow: 0px 0px 5px #000000;  
     cursor: pointer;  
 }
+
+/* MEDIA QUERIES */
+
+@media(min-width:1800px) {
+    .rental_info {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: space-between;
+        padding: 30px;
+    }
+    .rental_cust_info {
+        display: flex;
+        flex-direction: column;
+    }
+    .rental_disp_heading {
+        font-size: 35px;
+    }
+    .rental_disp_key {
+        font-size: 23px;
+    }
+    .rental_disp_val {
+        margin-bottom: 5px;
+        font-size: 23px;
+    }
+}

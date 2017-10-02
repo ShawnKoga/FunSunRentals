@@ -9,7 +9,28 @@ let initialState = {
     pastDueRentals: [],
     upcomingDueRentals: [],
     pendingRentals: [],
-    widgetRotate: 1
+    widgetRotate: 1,
+    rentalToEdit: [
+        // {
+        //     address: "333 Nurk St",
+        //     city: "Portland",
+        //     customer_id: 45,
+        //     email: "nurk@blazers.com",
+        //     end_date: "2017-10-03T06:00:00.000Z",
+        //     firstname: "Jusuf",
+        //     kayaks: 0,
+        //     lastname: "Nurkic",
+        //     lifejackets: 0,
+        //     paddleboards: 1,
+        //     phone: "1111111111",
+        //     rental_id: 141,
+        //     roofracks: 0,
+        //     start_date: "2017-10-02T06:00:00.000Z",
+        //     state: "OR",
+        //     status: "PENDING",
+        //     zip: 77777
+        // }
+    ]
 }
 
 //CONSTANTS
@@ -33,8 +54,12 @@ const QUICK_CLOSE = "QUICK_CLOSE";
 const QUICK_CLOSE_FULFILLED = "QUICK_CLOSE";
 const QUICK_OPEN = "QUICK_OPEN";
 const QUICK_OPEN_FULFILLED = "QUICK_OPEN";
-const BACK_WIDGET_BUTTON = "BACK_WIDGET_BUTTON";
-const NEXT_WIDGET_BUTTON = "NEXT_WIDGET_BUTTON";
+const QUICK_EDIT = "QUICK_EDIT";
+const QUICK_EDIT_FULFILLED = "QUICK_EDIT_FULFILLED";
+const OPEN_WIDGET_BUTTON = "OPEN_WIDGET_BUTTON";
+const PAST_WIDGET_BUTTON = "PAST_WIDGET_BUTTON";
+const SOON_WIDGET_BUTTON = "SOON_WIDGET_BUTTON";
+const PENDING_WIDGET_BUTTON = "PENDING_WIDGET_BUTTON";
 
 //REDUCER
 export default function dashReducer(state = initialState, action) {
@@ -69,11 +94,21 @@ export default function dashReducer(state = initialState, action) {
         case QUICK_OPEN_FULFILLED:
             return Object.assign({}, state, {})
 
-        case BACK_WIDGET_BUTTON:
-            return Object.assign({}, state, {widgetRotate: state.widgetRotate - action.payload})
+        case QUICK_EDIT_FULFILLED:
+            console.log('yoyo payload', action.payload)
+            return Object.assign({}, state, { rentalToEdit: action.payload })
 
-        case NEXT_WIDGET_BUTTON:
-            return Object.assign({}, state, {widgetRotate: state.widgetRotate + action.payload})
+        case OPEN_WIDGET_BUTTON:
+            return Object.assign({}, state, { widgetRotate: action.payload })
+
+        case PAST_WIDGET_BUTTON:
+            return Object.assign({}, state, { widgetRotate: action.payload })
+
+        case SOON_WIDGET_BUTTON:
+            return Object.assign({}, state, { widgetRotate: action.payload })
+
+        case PENDING_WIDGET_BUTTON:
+            return Object.assign({}, state, { widgetRotate: action.payload })
 
         default:
             return state
@@ -152,16 +187,37 @@ export function quickOpen(obj) {
     }
 }
 
-export function backWidgetButton(click) {
+export function quickEdit(num) {
     return {
-        type: BACK_WIDGET_BUTTON,
+        type: QUICK_EDIT,
+        payload: dashboardService.quickEdit(num)
+    }
+}
+
+export function openWidgetButton(click) {
+    return {
+        type: OPEN_WIDGET_BUTTON,
         payload: click
     }
 }
 
-export function nextWidgetButton(click) {
+export function pastWidgetButton(click) {
     return {
-        type: NEXT_WIDGET_BUTTON,
+        type: PAST_WIDGET_BUTTON,
+        payload: click
+    }
+}
+
+export function soonWidgetButton(click) {
+    return {
+        type: SOON_WIDGET_BUTTON,
+        payload: click
+    }
+}
+
+export function pendingWidgetButton(click) {
+    return {
+        type: PENDING_WIDGET_BUTTON,
         payload: click
     }
 }

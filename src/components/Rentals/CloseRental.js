@@ -52,11 +52,11 @@ export default class CloseRental extends Component {
                 <div className="close_rental_container">
                     <section className="close_rental_card">
                         <div className="close_rental_title">CLOSE RENTAL</div>
-                        <h1>Rental #:</h1> 
-                        <input onChange={(e) => { this.updateRentalID(e.target.value) }} placeholder="* REQUIRED" />
-                        <div>Rental Lookup</div>
-                        <button onClick={() => this.closeRental(this.state)}>Close Rental</button>
-                        <Link to="/dashboard"><button>Cancel/Exit</button></Link>
+                        <div className="close_rental_id">Rental #:</div> 
+                        <input className="close_rental_id_input" onChange={(e) => { this.updateRentalID(e.target.value) }} />
+                        <Link to="/rental_lookup" className="rental_lookup_link">Rental Lookup</Link>
+                        <button className="close_rental_p_button" onClick={() => this.closeRental(this.state)}>Close Rental</button>
+                        <Link to="/dashboard"><button className="close_rental_cancel_button">Cancel/Exit</button></Link>
                     </section>
                 </div>
             </div>

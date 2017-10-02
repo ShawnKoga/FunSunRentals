@@ -1,17 +1,15 @@
 import React, { Component } from 'react';
-import BigCalendar from 'react-big-calendar';
+// import BigCalendar from 'react-big-calendar';
 import Header from './Header';
-import moment from 'moment';
+// import moment from 'moment';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getActiveRentalCount, getPendingRentals, getAvailPB, getAvailKayaks, getAvailLifeJackets, getAvailRoofRacks, getUpcomingDue, getPastDue, quickClose, backWidgetButton, nextWidgetButton, quickOpen } from '../../ducks/dashReducer';
+import { getActiveRentalCount, getPendingRentals, getAvailPB, getAvailKayaks, getAvailLifeJackets, getAvailRoofRacks, getUpcomingDue, getPastDue, quickClose, quickEdit, openWidgetButton, pastWidgetButton, soonWidgetButton, pendingWidgetButton, quickOpen } from '../../ducks/dashReducer';
 import { updateCustomerID } from '../../ducks/createRentalReducer';
 import axios from 'axios';
 
-// import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
-// import 'pure-react-carousel/dist/react-carousel.es.css';
 import './Dashboard.css';
-import 'react-big-calendar/lib/css/react-big-calendar.css';
+// import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 let url = 'http://localhost:8080';
 
@@ -39,11 +37,11 @@ ontime({
 class Dashboard extends Component {
     componentDidMount() {
         axios.get('/auth/authorized').then(user => {
-            console.log('the response user', user)
-            if(user.data.user === false) {
+            // console.log('the response user', user)
+            if (user.data.user === false) {
                 this.props.history.push('/')
             } else {
-                console.log('did this work?!?!?!?!?')
+                // console.log('did this work?!?!?!?!?')
                 this.setState({
                     user: user.data
                 })
@@ -59,7 +57,6 @@ class Dashboard extends Component {
         this.props.getPastDue();
         this.props.getUpcomingDue();
     }
-
     // componentWillReceiveProps(nextProps) {
     //     nextProps.getActiveRentalCount();
     //     nextProps.getPastDue();
@@ -68,15 +65,13 @@ class Dashboard extends Component {
     // }
 
 
+
     render() {
-        console.log(this.props)
-
-        BigCalendar.momentLocalizer(moment);
-        var myEventsList = [];
-
-        const activeRentalQuickView = this.props.activeRentalCount.map((c, i) => {
+        // BigCalendar.momentLocalizer(moment);
+        // var myEventsList = [];
+        const pendingRentalQuickView = this.props.pendingRentals.map((c, i) => {
             var closeObj = { rentalID: c.rental_id }
-            // var start = (c.start_date).substring(0, (c.start_date).indexOf('T'));
+            var start = (c.start_date).substring(0, (c.start_date).indexOf('T'));
             var end = (c.end_date).substring(0, (c.end_date).indexOf('T'));
             return (
                 <div key={i} className={this.props.widgetRotate === 1 ? "open_rental_card show_widget" : "open_rental_card hide_widget"}>
@@ -84,7 +79,37 @@ class Dashboard extends Component {
                         <div className="rental_card_key">Customer Name:&nbsp;</div> <div className="rental_card_val">{c.firstname} {c.lastname}</div>
                         <div className="rental_card_key">Phone:&nbsp;</div> <div className="rental_card_val">{c.phone}</div>
                         <div className="rental_card_key">Email:&nbsp;</div> <div className="rental_card_val">{c.email}</div>
-                        <div className="rental_card_key">Return Date:&nbsp;</div> <div className="rental_card_val">{end}</div>
+                        <div className="rental_card_key">Pickup:&nbsp;</div> <div className="rental_card_val">{start}</div>
+                        <div className="rental_card_key">Return:&nbsp;</div> <div className="rental_card_val">{end}</div>
+                        <div className="rental_card_key">Boards:&nbsp;</div> <div className="rental_card_val">{c.paddleboards}</div>
+                        <div className="rental_card_key">Kayaks:&nbsp;</div> <div className="rental_card_val">{c.kayaks}</div>
+                        <div className="rental_card_key">Racks:&nbsp;</div> <div className="rental_card_val">{c.roofracks}</div>
+                        <div className="rental_card_key">Jackets:&nbsp;</div> <div className="rental_card_val">{c.lifejackets}</div>
+                    </div>
+                    <div>
+                        <div className="rental_card_key">Rental #:&nbsp;</div> <div className="rental_card_val">{c.rental_id}</div>
+                        <div className="quick_button_container">
+                        <Link to="/edit_rental"><button className="quick_edit_button" onClick={() => { this.props.quickEdit(c.rental_id) }}>Edit Rental</button></Link>
+                        <button className="quick_open_button" onClick={() => { this.props.quickOpen(c) }}>Open Rental</button>
+                        <button className="quick_close_button" onClick={() => { this.props.quickClose(closeObj) }}>Close Rental</button>
+                        </div>
+                    </div>
+                </div>
+            )
+        })
+
+        const activeRentalQuickView = this.props.activeRentalCount.map((c, i) => {
+            var closeObj = { rentalID: c.rental_id }
+            var start = (c.start_date).substring(0, (c.start_date).indexOf('T'));
+            var end = (c.end_date).substring(0, (c.end_date).indexOf('T'));
+            return (
+                <div key={i} className={this.props.widgetRotate === 2 ? "open_rental_card show_widget" : "open_rental_card hide_widget"}>
+                    <div>
+                        <div className="rental_card_key">Customer Name:&nbsp;</div> <div className="rental_card_val">{c.firstname} {c.lastname}</div>
+                        <div className="rental_card_key">Phone:&nbsp;</div> <div className="rental_card_val">{c.phone}</div>
+                        <div className="rental_card_key">Email:&nbsp;</div> <div className="rental_card_val">{c.email}</div>
+                        <div className="rental_card_key">Pickup:&nbsp;</div> <div className="rental_card_val">{start}</div>
+                        <div className="rental_card_key">Return:&nbsp;</div> <div className="rental_card_val">{end}</div>
                         <div className="rental_card_key">Boards:&nbsp;</div> <div className="rental_card_val">{c.paddleboards}</div>
                         <div className="rental_card_key">Kayaks:&nbsp;</div> <div className="rental_card_val">{c.kayaks}</div>
                         <div className="rental_card_key">Racks:&nbsp;</div> <div className="rental_card_val">{c.roofracks}</div>
@@ -97,18 +122,19 @@ class Dashboard extends Component {
                 </div>
             )
         })
-        
+
         const pastDueQuickView = this.props.pastDueRentals.map((c, i) => {
             var closeObj = { rentalID: c.rental_id }
-            // var start = (c.start_date).substring(0, (c.start_date).indexOf('T'));
+            var start = (c.start_date).substring(0, (c.start_date).indexOf('T'));
             var end = (c.end_date).substring(0, (c.end_date).indexOf('T'));
             return (
-                <div key={i} className={this.props.widgetRotate === 2 ? "open_rental_card show_widget" : "open_rental_card hide_widget"}>
+                <div key={i} className={this.props.widgetRotate === 3 ? "open_rental_card show_widget" : "open_rental_card hide_widget"}>
                     <div>
                         <div className="rental_card_key">Customer Name:&nbsp;</div> <div className="rental_card_val">{c.firstname} {c.lastname}</div>
                         <div className="rental_card_key">Phone:&nbsp;</div> <div className="rental_card_val">{c.phone}</div>
                         <div className="rental_card_key">Email:&nbsp;</div> <div className="rental_card_val">{c.email}</div>
-                        <div className="rental_card_key">Return Date:&nbsp;</div> <div className="rental_card_val">{end}</div>
+                        <div className="rental_card_key">Pickup:&nbsp;</div> <div className="rental_card_val">{start}</div>
+                        <div className="rental_card_key">Return:&nbsp;</div> <div className="rental_card_val">{end}</div>
                         <div className="rental_card_key">Boards:&nbsp;</div> <div className="rental_card_val">{c.paddleboards}</div>
                         <div className="rental_card_key">Kayaks:&nbsp;</div> <div className="rental_card_val">{c.kayaks}</div>
                         <div className="rental_card_key">Racks:&nbsp;</div> <div className="rental_card_val">{c.roofracks}</div>
@@ -124,30 +150,6 @@ class Dashboard extends Component {
 
         const upcomingDueQuickView = this.props.upcomingDueRentals.map((c, i) => {
             var closeObj = { rentalID: c.rental_id }
-            // var start = (c.start_date).substring(0, (c.start_date).indexOf('T'));
-            var end = (c.end_date).substring(0, (c.end_date).indexOf('T'));
-            return (
-                <div key={i} className={this.props.widgetRotate === 3 ? "open_rental_card show_widget" : "open_rental_card hide_widget"}>
-                    <div>
-                        <div className="rental_card_key">Customer Name:&nbsp;</div> <div className="rental_card_val">{c.firstname} {c.lastname}</div>
-                        <div className="rental_card_key">Phone:&nbsp;</div> <div className="rental_card_val">{c.phone}</div>
-                        <div className="rental_card_key">Email:&nbsp;</div> <div className="rental_card_val">{c.email}</div>
-                        <div className="rental_card_key">Return Date:&nbsp;</div> <div className="rental_card_val">{end}</div>
-                        <div className="rental_card_key">Boards:&nbsp;</div> <div className="rental_card_val">{c.paddleboards}</div>
-                        <div className="rental_card_key">Kayaks:&nbsp;</div> <div className="rental_card_val">{c.kayaks}</div>
-                        <div className="rental_card_key">Racks:&nbsp;</div> <div className="rental_card_val">{c.roofracks}</div>
-                        <div className="rental_card_key">Jackets:&nbsp;</div> <div className="rental_card_val">{c.lifejackets}</div>
-                    </div>
-                    <div>
-                        <div className="rental_card_key">Rental #:&nbsp;</div> <div className="rental_card_val">{c.rental_id}</div>
-                        <button className="quick_close_button" onClick={() => { this.props.quickClose(closeObj) }}>Close Rental</button>
-                    </div>
-                </div>
-            )
-        })
-
-        const pendingRentalQuickView = this.props.pendingRentals.map((c, i) => {
-            var closeObj = { rentalID: c.rental_id }
             var start = (c.start_date).substring(0, (c.start_date).indexOf('T'));
             var end = (c.end_date).substring(0, (c.end_date).indexOf('T'));
             return (
@@ -156,7 +158,8 @@ class Dashboard extends Component {
                         <div className="rental_card_key">Customer Name:&nbsp;</div> <div className="rental_card_val">{c.firstname} {c.lastname}</div>
                         <div className="rental_card_key">Phone:&nbsp;</div> <div className="rental_card_val">{c.phone}</div>
                         <div className="rental_card_key">Email:&nbsp;</div> <div className="rental_card_val">{c.email}</div>
-                        <div className="rental_card_key">Dates:&nbsp;</div> <div className="rental_card_val">{start}</div><div>{end}</div>
+                        <div className="rental_card_key">Pickup:&nbsp;</div> <div className="rental_card_val">{start}</div>
+                        <div className="rental_card_key">Return:&nbsp;</div> <div className="rental_card_val">{end}</div>
                         <div className="rental_card_key">Boards:&nbsp;</div> <div className="rental_card_val">{c.paddleboards}</div>
                         <div className="rental_card_key">Kayaks:&nbsp;</div> <div className="rental_card_val">{c.kayaks}</div>
                         <div className="rental_card_key">Racks:&nbsp;</div> <div className="rental_card_val">{c.roofracks}</div>
@@ -164,7 +167,6 @@ class Dashboard extends Component {
                     </div>
                     <div>
                         <div className="rental_card_key">Rental #:&nbsp;</div> <div className="rental_card_val">{c.rental_id}</div>
-                        <button className="quick_open_button" onClick={() => {this.props.quickOpen(c)}}>Open Rental</button>
                         <button className="quick_close_button" onClick={() => { this.props.quickClose(closeObj) }}>Close Rental</button>
                     </div>
                 </div>
@@ -179,58 +181,76 @@ class Dashboard extends Component {
                     <container className="dash_transparency">
 
                         <div className="quick_guide_container">
-                            <div className="quick_guide_component">
+                            <div className="quick_guide_component1">
                                 <div className="quick_guide_title">QuickStats</div>
-                                <div>Active Rentals: {this.props.activeRentalCount.length}</div>
-                                <div>Rentals Past Due: {this.props.pastDueRentals.length}</div>
-                                <div>Upcoming Due: {this.props.upcomingDueRentals.length}</div>
-                                <div>Avail. PB: {this.props.currentAvailPB}</div>
-                                <div>Avail. Kayaks: {this.props.currentAvailKayaks}</div>
-                                <div>Avail. Jackets: {this.props.currentAvailLifeJackets}</div>
-                                <div>Avail. Racks: {this.props.currentAvailRoofRacks}</div>
+                                <div className="quick_stat_row">
+                                    <div className="quick_stat_key">Active Rentals:</div> <div className="quick_stat_val">{this.props.activeRentalCount.length}</div>
+                                </div>
+                                <div className="quick_stat_row">
+                                    <div className="quick_stat_key">Rentals Past Due:</div> <div className={this.props.pastDueRentals.length === 0 ? "quick_stat_val" : "quick_stat_val_warning"}>{this.props.pastDueRentals.length}</div>
+                                </div>
+                                <div className="quick_stat_row">
+                                    <div className="quick_stat_key">Due Soon:</div> <div className={this.props.upcomingDueRentals.length === 0 ? "quick_stat_val" : "quick_stat_val_attention"}>{this.props.upcomingDueRentals.length}</div>
+                                </div>
+                                <div className="quick_stat_row">
+                                    <div className="quick_stat_key">Boards Available:</div> <div className={this.props.currentAvailPB <= 3 ? "quick_stat_val_attention" : "quick_stat_val"}>{this.props.currentAvailPB}</div>
+                                </div>
+                                <div className="quick_stat_row">
+                                    <div className="quick_stat_key">Kayaks Available:</div> <div className={this.props.currentAvailKayaks <= 2 ? "quick_stat_val_attention" : "quick_stat_val"}>{this.props.currentAvailKayaks}</div>
+                                </div>
+                                <div className="quick_stat_row">
+                                    <div className="quick_stat_key">Jackets Available:</div> <div className={this.props.currentAvailLifeJackets <= 3 ? "quick_stat_val_attention" : "quick_stat_val"}>{this.props.currentAvailLifeJackets}</div>
+                                </div>
+                                <div className="quick_stat_row">
+                                    <div className="quick_stat_key">Racks Available:</div> <div className={this.props.currentAvailRoofRacks <= 2 ? "quick_stat_val_attention" : "quick_stat_val"}>{this.props.currentAvailRoofRacks}</div>
+                                </div>
                             </div>
 
-                            <div className="quick_guide_component">
+                            <div className="quick_guide_component2">
                                 <div className="quick_guide_title">QuickLinks</div>
-                                <Link to="/new_rental" onClick={() => this.props.updateCustomerID(0)}>New Rental</Link>
-                                <Link to="/close_rental">Close Rental</Link>
-                                <Link to="/new_customer">New Customer</Link>
-                                <Link to="/rental_lookup">Rental Lookup</Link>
-                                <Link to="/customer_lookup">Customer Lookup</Link>
+                                <Link className="quick_guide_link" to="/new_rental" onClick={() => this.props.updateCustomerID(0)}>New Rental</Link>
+                                <Link className="quick_guide_link" to="/close_rental">Close Rental</Link>
+                                <Link className="quick_guide_link" to="/new_customer">New Customer</Link>
+                                <Link className="quick_guide_link" to="/rental_lookup">Rental Lookup</Link>
+                                <Link className="quick_guide_link" to="/customer_lookup">Customer Lookup</Link>
                             </div>
                         </div>
 
                         <div className="rental_quick_view_container">
                             <section className="rental_quick_view_header">
-                                <button disabled={this.props.widgetRotate <= 1 ? true : false} onClick={() => this.props.backWidgetButton(1)}>Back</button>
-                                <div className={this.props.widgetRotate === 1 ? "rental_quick_view_title show_widget" : "rental_quick_view_title hide_widget"}>OPEN RENTALS:</div>
-                                <div className={this.props.widgetRotate === 2 ? "rental_quick_view_title show_widget" : "rental_quick_view_title hide_widget"}>PAST DUE:</div>
-                                <div className={this.props.widgetRotate === 3 ? "rental_quick_view_title show_widget" : "rental_quick_view_title hide_widget"}>UPCOMING DUE:</div>
-                                <div className={this.props.widgetRotate === 4 ? "rental_quick_view_title show_widget" : "rental_quick_view_title hide_widget"}>PENDING RENTALS:</div>
-                                <button disabled={this.props.widgetRotate >= 4 ? true : false} onClick={() => this.props.nextWidgetButton(1)}>Next</button>
+                                <div className="tab_container">
+                                    <button className="widget_rotate_tabs" disabled={this.props.widgetRotate === 1 ? true : false} onClick={() => this.props.pendingWidgetButton(1)}>Pending Rentals</button>
+                                    <button className="widget_rotate_tabs" disabled={this.props.widgetRotate === 2 ? true : false} onClick={() => this.props.openWidgetButton(2)}>Open Rentals</button>
+                                    <button className="widget_rotate_tabs" disabled={this.props.widgetRotate === 3 ? true : false} onClick={() => this.props.pastWidgetButton(3)}>Past Due</button>
+                                    <button className="widget_rotate_tabs" disabled={this.props.widgetRotate === 4 ? true : false} onClick={() => this.props.soonWidgetButton(4)}>Due Soon</button>
+                                </div>
+                                <div className={this.props.widgetRotate === 1 ? "rental_quick_view_title show_widget" : "rental_quick_view_title hide_widget"}>PENDING RENTALS:</div>
+                                <div className={this.props.widgetRotate === 2 ? "rental_quick_view_title show_widget" : "rental_quick_view_title hide_widget"}>OPEN RENTALS:</div>
+                                <div className={this.props.widgetRotate === 3 ? "rental_quick_view_title show_widget" : "rental_quick_view_title hide_widget"}>PAST DUE:</div>
+                                <div className={this.props.widgetRotate === 4 ? "rental_quick_view_title show_widget" : "rental_quick_view_title hide_widget"}>DUE SOON:</div>
                             </section>
 
-                            <div className="quick_guide_card_container">
+                            <div className={this.props.widgetRotate === 1 ? "quick_guide_card_container show_widget" : "quick_guide_card_container hide_widget"}>
+                                {pendingRentalQuickView}
+                            </div>
+
+                            <div className={this.props.widgetRotate === 2 ? "quick_guide_card_container show_widget" : "quick_guide_card_container hide_widget"}>
                                 {activeRentalQuickView}
                             </div>
 
-                            <div className="quick_guide_card_container">
+                            <div className={this.props.widgetRotate === 3 ? "quick_guide_card_container show_widget" : "quick_guide_card_container hide_widget"}>
                                 {pastDueQuickView}
                             </div>
 
-                            <div className="quick_guide_card_container">
+                            <div className={this.props.widgetRotate === 4 ? "quick_guide_card_container show_widget" : "quick_guide_card_container hide_widget"}>
                                 {upcomingDueQuickView}
-                            </div>
-
-                            <div className="quick_guide_card_container">
-                                {pendingRentalQuickView}
                             </div>
                         </div>
 
                     </container>
                 </section>
 
-                <section className="calendar_container">
+                {/* <section className="calendar_container">
                     <div className="calendar">
                         <BigCalendar
                             views={{ month: true, week: true, day: false, agenda: true }}
@@ -239,7 +259,7 @@ class Dashboard extends Component {
                             endAccessor='endDate'
                         />
                     </div>
-                </section>
+                </section> */}
             </main>
         )
     }
@@ -249,4 +269,4 @@ function mapStateToProps(state) {
     return state.dashboard
 }
 
-export default connect(mapStateToProps, { getActiveRentalCount, getPendingRentals, getAvailPB, getAvailKayaks, getAvailLifeJackets, getAvailRoofRacks, getUpcomingDue, getPastDue, quickClose, updateCustomerID, backWidgetButton, nextWidgetButton, quickOpen })(Dashboard)
+export default connect(mapStateToProps, { getActiveRentalCount, getPendingRentals, getAvailPB, getAvailKayaks, getAvailLifeJackets, getAvailRoofRacks, getUpcomingDue, getPastDue, quickClose, quickEdit, updateCustomerID, openWidgetButton, pastWidgetButton, soonWidgetButton, pendingWidgetButton, quickOpen })(Dashboard)

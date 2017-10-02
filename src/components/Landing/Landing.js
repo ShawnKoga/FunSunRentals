@@ -4,6 +4,7 @@ import logo from '../../assets/FUTSRArtboard 1.svg';
 import lakeVideo from '../../assets/Lake - 913.mp4';
 import { SocialIcon } from 'react-social-icons';
 import axios from 'axios';
+import svg from '../../assets/hamburger.svg';
 
 let url = 'http://localhost:8080';
 
@@ -146,6 +147,25 @@ export default class Landing extends Component {
             roofRackCount: num
         })
     }
+    cancelTheRequest() {
+        document.getElementById('inputfield1').value = '';
+        document.getElementById('inputfield2').value = '';
+        document.getElementById('inputfield3').value = '';
+        document.getElementById('inputfield4').value = '';
+        document.getElementById('inputfield5').value = '';
+        document.getElementById('inputfield6').value = '';
+        document.getElementById('inputfield7').value = '';
+        document.getElementById('inputfield8').value = '';
+        document.getElementById('inputfield9').value = '';
+        document.getElementById('inputfield10').value = '';
+        document.getElementById('inputfield11').value = '';
+        document.getElementById('inputfield12').value = '';
+        document.getElementById('inputfield13').value = '';
+        document.getElementById('selectfield').value = 'null';
+        this.setState({
+            custReqToggler: 1
+        })
+    }
     submitRentalRequest(obj) {
         if (this.state.startDate !== null && this.state.endDate !== null) {
             document.getElementById('inputfield1').value = '';
@@ -194,6 +214,12 @@ export default class Landing extends Component {
                 })
             })
     }
+    clearContactForm() {
+        document.getElementById('contact_input1').value = '';
+        document.getElementById('contact_input2').value = '';
+        document.getElementById('contact_input3').value = '';
+        document.getElementById('contact_input4').value = '';
+    }
 
     render() {
         const isThisYouCust = this.state.customerDisp.map((c, i) => {
@@ -216,12 +242,12 @@ export default class Landing extends Component {
                         <div className="forecast_title">Date:&nbsp;</div><div>{c.date.monthname_short} {c.date.day}, {c.date.year}</div>
                     </div>
                     <div className="forecast_row">
-                        <div className="forecast_title">Low:&nbsp;</div><div>{c.low.fahrenheit}&#176;F</div>
+                        <div className="forecast_title">Low:&nbsp;</div><div className="forecast_data">{c.low.fahrenheit}&#176;F</div>
                         <div className="forecast_title">High:&nbsp;</div><div>{c.high.fahrenheit}&#176;F</div>
                     </div>
                     <div className="forecast_row">
-                        <div className="forecast_title">Conditions:&nbsp;</div><div>{c.conditions}</div>
-                        <div className="forecast_title">Wind:&nbsp;</div><div>{c.avewind.mph}</div>
+                        <div className="forecast_title">Conditions:&nbsp;</div><div className="forecast_data">{c.conditions}</div>
+                        <div className="forecast_title">Wind:&nbsp;</div><div>{c.avewind.mph}mph</div>
                     </div>
                 </div>
             )
@@ -231,10 +257,11 @@ export default class Landing extends Component {
             <main>
                 {/* HEADER */}
                 <section className="landing_header">
-                    <a  href="#landing" className="landing_title">
+                    <a href="#landing" className="landing_title">
                         <div>FUN UNDER THE SUN<br />RENTALS</div>
                     </a>
-                    <div>
+
+                    <div className="landing_button_container">
                         <a href="#about_us" className="landing_header_button">ABOUT US</a>
                         <a href="#request_time" className="landing_header_button">RENT</a>
                         <a href="#contact" className="landing_header_button">CONTACT US</a>
@@ -284,6 +311,7 @@ export default class Landing extends Component {
 
                                 {/* STEP ONE */}
                                 <div className={this.state.custReqToggler === 1 ? "request_info_container show_req" : "request_info_container hide_req"}>
+
                                     <div className="req_row">
                                         <div className="req_info_title">First Name:</div> <input id="inputfield1" className="req_name_box" onChange={(e) => this.updateFirstName(e.target.value)} />
                                         <div className="req_info_title">Last Name:</div> <input id="inputfield2" className="req_name_box" onChange={(e) => this.updateLastName(e.target.value)} />
@@ -363,6 +391,7 @@ export default class Landing extends Component {
                                     {isThisYouCust}
                                     <button className="req_no_button" onClick={() => this.newCustomerApprove(this.state)}>NO, I'M NEW</button>
                                     <button className="req_submit_button" onClick={() => this.returningCustApprove(this.state.customerDisp[0].customer_id)}>YES</button>
+                                    <button className="req_cancel_button" onClick={() => this.cancelTheRequest()}>Cancel</button>
                                 </div>
 
                                 {/* STEP THREE */}
@@ -380,6 +409,7 @@ export default class Landing extends Component {
                                         <div className="req_info_title">Roof Racks:</div> <input id="inputfield13" type="number" min="0" className="req_state_box" onChange={(e) => this.updateRoofRackCount(e.target.value)} />
                                     </div>
                                     <button className="req_submit_button" onClick={() => this.submitRentalRequest(this.state)}>SUBMIT</button>
+                                    <button className="req_cancel_button" onClick={() => this.cancelTheRequest()}>Cancel</button>
                                 </div>
                             </section>
 
@@ -495,16 +525,14 @@ export default class Landing extends Component {
 
                             <div className="contact_info_container">
                                 <div className="location_text_heading">Name:</div>
-                                <input className="name_email_box" />
+                                <input id="contact_input1" className="name_email_box" />
+                                <div className="location_text_heading">Phone:</div>
+                                <input id="contact_input2" className="name_email_box" />
                                 <div className="location_text_heading">Email:</div>
-                                <input className="name_email_box" />
+                                <input id="contact_input3" className="name_email_box" />
                                 <div className="location_text_heading">Message:</div>
-                                <input className="message_box" />
-                                <div className="location_text_heading">How did you hear about us?</div>
-                                <select className="contact_select_box">
-                                    <option value="null">SELECT ONE</option>
-                                </select>
-                                <button className="contact_submit_button">Submit</button>
+                                <textarea id="contact_input4" className="message_box" />
+                                <button className="contact_submit_button" onClick={() => this.clearContactForm()}>Submit</button>
                             </div>
 
                         </section>

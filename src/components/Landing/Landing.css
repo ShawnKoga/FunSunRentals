@@ -318,7 +318,7 @@ button:focus {
     height: 35px;
     font-weight: bold;
     font-size: 15px;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
     box-shadow: 0px 0px 5px #000000;
     cursor: pointer;  
 }
@@ -326,11 +326,24 @@ button:focus {
 .req_no_button {
     border-style: none;
     border-radius: 5px;
-    background: lightcoral;
+    background: #FFF09B;
     width: 150px;
     height: 35px;
     font-weight: bold;
     font-size: 15px;
+    margin-bottom: 5px;
+    box-shadow: 0px 0px 5px #000000;
+    cursor: pointer;  
+}
+
+.req_cancel_button {
+    border-style: none;
+    border-radius: 5px;
+    background: lightcoral;
+    width: 75px;
+    height: 25px;
+    font-weight: bold;
+    font-size: 13px;
     margin-bottom: 5px;
     box-shadow: 0px 0px 5px #000000;
     cursor: pointer;  
@@ -421,7 +434,9 @@ button:focus {
     font-weight: bold
 }
 
-
+.forecast_data {
+    margin-right: 1rem;
+}
 
 /* CONTACT US SECTION */
 .contact_us_section{
@@ -497,6 +512,7 @@ button:focus {
 .phone_icon {
     font-size: 50px;
     padding-bottom: 20px;
+    text-shadow: 0px 1px 5px #000000; 
 }
 
 .email_container {
@@ -511,6 +527,7 @@ button:focus {
     font-size: 50px;
     padding-bottom: 30px;
     margin-right: 10px;
+    text-shadow: 0px 1px 5px #000000;    
 }
 
 .social_container {
@@ -541,12 +558,15 @@ button:focus {
     width: 80%;
     height: 5%;
     margin-bottom: 10px;
+    font-size: 15px;
 }
 
 .message_box {
     width: 80%;
     height: 30%;
     margin-bottom: 10px;
+    font-size: 15px;
+    border-color: lightgray;
 }
 
 .contact_select_box {
@@ -562,5 +582,24 @@ button:focus {
     border-radius: 5px;
     background: lightgreen;
     box-shadow: 0px 1px 5px #000000;
-    margin-top: 15px;      
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 15px;
+}
+
+
+
+/* MEDIA QUERIES */
+@media(min-width:1000px) {
+
+}
+
+@media(min-width:1800px) {
+    .landing_img {
+        margin-left: .75rem;
+        height: 50rem;
+    }
+    .about_text {
+        font-size: 70px;
+    }
 }

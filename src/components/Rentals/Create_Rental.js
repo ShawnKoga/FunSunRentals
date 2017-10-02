@@ -51,7 +51,7 @@ class Create_Rental extends Component {
                         <div className="create_rental_container">
                             <div className="create_rental_title">CREATE RENTAL</div>
                             <div className="create_rental_category">Customer ID: </div>
-                            <input placeholder={this.props.newRental.customerID} value={this.props.newRental.customerID} onChange={(e) => this.props.updateCustomerID(e.target.value)} />
+                            <input className="input_box" placeholder={this.props.newRental.customerID} value={this.props.newRental.customerID} onChange={(e) => this.props.updateCustomerID(e.target.value)} />
                             <Link className="customer_lookup_button" to="/customer_lookup">Customer Lookup</Link>
 
                             <div className="create_rental_category">Start Date: </div>
@@ -72,8 +72,8 @@ class Create_Rental extends Component {
                             <div className="create_rental_category">Life Jackets: </div>
                             <input className="input_box" type="number" min="0" onChange={(e) => this.props.updateLifeJacketCount(e.target.value)} />
 
-                            <button onClick={() => {this.createRental(this.props.newRental)}}>Create Rental</button>
-                            <Link to="/dashboard"><button>Cancel</button></Link>
+                            <button className="create_rental_button" onClick={() => {this.createRental(this.props.newRental)}}>Create Rental</button>
+                            <Link to="/dashboard"><button className="cancel_button">Cancel</button></Link>
                         </div>
                     </div>
                 </div>

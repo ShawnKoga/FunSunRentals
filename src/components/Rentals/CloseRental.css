@@ -14,7 +14,7 @@
 
 .close_rental_card {
     width: 30%;
-    height: 80%;
+    height: 50%;
     background-color: rgba(255, 255, 255, 0.70);   
     box-shadow: 0px 1px 15px #000000;    
     border-radius: 25px;
@@ -27,4 +27,71 @@
     font-family: 'Permanent Marker', sans-serif;
     font-size: 40px;
     text-align: center;
+    margin: 15px;
+}
+
+.close_rental_id {
+    font-weight: bold;
+    font-size: 30px;
+}
+
+.close_rental_id_input {
+    width: 100px;
+    height: 20px;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.rental_lookup_link {
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.close_rental_p_button {
+    width: 150px;
+    height: 30px;
+    border-style: none;
+    border-radius: 5px;
+    background: #FFEC80;
+    font-weight: bold;
+    font-size: 13px;
+    box-shadow: 0px 1px 5px #000000;
+    margin-top: 10px;
+}
+
+.close_rental_cancel_button {
+    width: 150px;
+    height: 30px;
+    border-style: none;
+    border-radius: 5px;
+    background: lightcoral;
+    font-weight: bold;
+    font-size: 13px;
+    box-shadow: 0px 1px 5px #000000;
+    margin-top: 15px;
+}
+
+
+/* MEDIA QUERIES */
+@media(min-width:1800px) {
+    .close_rental_title {
+        font-size: 55px;
+    }
+    
+    .close_rental_id {
+        font-size: 40px;
+    }
+    
+    .close_rental_id_input {
+        height: 30px;
+        font-size: 18px;
+    }
+    
+    .rental_lookup_link {
+        font-size: 15px;
+    }
+    
+    .close_rental_p_button {
+        margin-top: 15px;
+    }
 }

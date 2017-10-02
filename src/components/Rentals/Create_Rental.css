@@ -28,6 +28,7 @@
     align-items: center;
     justify-content: center;
     margin-top: 55px;
+    box-shadow: 0px 0px 15px #000000; 
 }
 
 .create_rental_title {
@@ -35,7 +36,7 @@
     font-size: 40px;
     text-align: center;
     margin-top: -20px;
-    margin-bottom: 20px;
+    margin-bottom: 2px;
 }
 
 .create_rental_category {
@@ -53,4 +54,59 @@
 
 .input_box {
     margin-bottom: 10px;
+}
+
+.create_rental_button {
+    width: 150px;
+    height: 30px;
+    border-style: none;
+    border-radius: .5rem;
+    background: lightgreen;
+    font-weight: bold;
+    font-size: 15px;
+    box-shadow: 0px 0px 5px #000000; 
+    margin-bottom: 10px;
+}
+
+.cancel_button {
+    width: 125px;
+    height: 25px;
+    border-style: none;
+    border-radius: .5rem;
+    background: lightcoral;
+    font-weight: bold;
+    font-size: 12px;
+    box-shadow: 0px 0px 5px #000000; 
+    margin-bottom: 10px;
+}
+
+/* MEDIA QUERIES */
+@media(min-width:1800px) {
+    .create_rental_title {
+        font-size: 55px;
+    }
+    
+    .create_rental_category {
+        font-size: 30px;
+    }
+    
+    .customer_lookup_button {
+        text-decoration: underline;
+        color: blue;
+        font-size: 18px;
+        margin-top: -15px;
+        margin-bottom: 10px;
+        cursor: pointer;
+    }
+    
+    .input_box {
+        width: 25%;
+        height: 20px;
+        margin-bottom: 15px;
+        font-size: 14px;
+    }
+    
+    .create_rental_button {
+        margin-bottom: 15px;
+    }
 }
