@@ -52,6 +52,7 @@ export function getAvailLifeJackets() {
 }
 
 export function getAvailRoofRacks() {
+    console.log('hitfunction')
     return axios.get(`${url}/inventory/get_rr_avail`)
         .then(res => {
             return res.data[0].count
@@ -61,7 +62,14 @@ export function getAvailRoofRacks() {
 export function quickClose(id) {
     return axios.put(`${url}/rentals/close_rental`, id)
     .then(res => {
+        // getAvailPB();
+        // getAvailKayaks();
+        // getAvailLifeJackets();
+        // getAvailRoofRacks();
+        console.log('quickClose response', res);
         return res.data
+        // console.log('quickClose response', res);
+        // return res.data
     })
 }
 
@@ -69,6 +77,7 @@ export function quickOpen(obj) {
     console.log('this is the obj to open', obj)
     return axios.put(`${url}/rentals/confirm_checkout`, obj)
     .then(res => {
+        console.log(res.data)
         return res.data
     })
 }

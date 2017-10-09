@@ -4,7 +4,7 @@ import Header from './Header';
 // import moment from 'moment';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { getActiveRentalCount, getPendingRentals, getAvailPB, getAvailKayaks, getAvailLifeJackets, getAvailRoofRacks, getUpcomingDue, getPastDue, quickClose, quickEdit, openWidgetButton, pastWidgetButton, soonWidgetButton, pendingWidgetButton, quickOpen } from '../../ducks/dashReducer';
+import { getActiveRentalCount, getPendingRentals, getAvailPB, getAvailKayaks, getAvailLifeJackets, getAvailRoofRacks, getUpcomingDue, getPastDue, quickClose, quickEdit, openWidgetButton, pastWidgetButton, soonWidgetButton, pendingWidgetButton, quickOpen, testCloser, testOpener } from '../../ducks/dashReducer';
 import { updateCustomerID } from '../../ducks/createRentalReducer';
 import axios from 'axios';
 
@@ -57,18 +57,25 @@ class Dashboard extends Component {
         this.props.getPastDue();
         this.props.getUpcomingDue();
     }
-    // componentWillReceiveProps(nextProps) {
-    //     nextProps.getActiveRentalCount();
-    //     nextProps.getPastDue();
-    //     nextProps.getUpcomingDue();
-    //     nextProps.getPendingRentals();
-    // }
 
-
+    testCloser(obj) {
+        this.props.quickClose(obj)
+        .then(res => {
+            this.props.testCloser()
+        })
+    }
+    testOpener(obj) {
+        this.props.quickOpen(obj)
+        .then(res => {
+            console.log('hit 1')
+            this.props.testOpener()
+        })
+    }
 
     render() {
         // BigCalendar.momentLocalizer(moment);
         // var myEventsList = [];
+        console.log('stuff to update', this.props.activeRentalCount)
         const pendingRentalQuickView = this.props.pendingRentals.map((c, i) => {
             var closeObj = { rentalID: c.rental_id }
             var start = (c.start_date).substring(0, (c.start_date).indexOf('T'));
@@ -90,8 +97,8 @@ class Dashboard extends Component {
                         <div className="rental_card_key">Rental #:&nbsp;</div> <div className="rental_card_val">{c.rental_id}</div>
                         <div className="quick_button_container">
                         <Link to="/edit_rental"><button className="quick_edit_button" onClick={() => { this.props.quickEdit(c.rental_id) }}>Edit Rental</button></Link>
-                        <button className="quick_open_button" onClick={() => { this.props.quickOpen(c) }}>Open Rental</button>
-                        <button className="quick_close_button" onClick={() => { this.props.quickClose(closeObj) }}>Close Rental</button>
+                        <button className="quick_open_button" onClick={() => { this.testOpener(c) }}>Open Rental</button>
+                        <button className="quick_close_button" onClick={() => { this.testCloser(closeObj) }}>Close Rental</button>
                         </div>
                     </div>
                 </div>
@@ -117,7 +124,7 @@ class Dashboard extends Component {
                     </div>
                     <div>
                         <div className="rental_card_key">Rental #:&nbsp;</div> <div className="rental_card_val">{c.rental_id}</div>
-                        <button className="quick_close_button" onClick={() => { this.props.quickClose(closeObj) }}>Close Rental</button>
+                        <button className="quick_close_button" onClick={() => { this.testCloser(closeObj) }}>Close Rental</button>
                     </div>
                 </div>
             )
@@ -142,7 +149,7 @@ class Dashboard extends Component {
                     </div>
                     <div>
                         <div className="rental_card_key">Rental #:&nbsp;</div> <div className="rental_card_val">{c.rental_id}</div>
-                        <button className="quick_close_button" onClick={() => { this.props.quickClose(closeObj) }}>Close Rental</button>
+                        <button className="quick_close_button" onClick={() => { this.testCloser(closeObj) }}>Close Rental</button>
                     </div>
                 </div>
             )
@@ -167,7 +174,7 @@ class Dashboard extends Component {
                     </div>
                     <div>
                         <div className="rental_card_key">Rental #:&nbsp;</div> <div className="rental_card_val">{c.rental_id}</div>
-                        <button className="quick_close_button" onClick={() => { this.props.quickClose(closeObj) }}>Close Rental</button>
+                        <button className="quick_close_button" onClick={() => { this.testCloser(closeObj) }}>Close Rental</button>
                     </div>
                 </div>
             )
@@ -269,4 +276,4 @@ function mapStateToProps(state) {
     return state.dashboard
 }
 
-export default connect(mapStateToProps, { getActiveRentalCount, getPendingRentals, getAvailPB, getAvailKayaks, getAvailLifeJackets, getAvailRoofRacks, getUpcomingDue, getPastDue, quickClose, quickEdit, updateCustomerID, openWidgetButton, pastWidgetButton, soonWidgetButton, pendingWidgetButton, quickOpen })(Dashboard)
+export default connect(mapStateToProps, { getActiveRentalCount, getPendingRentals, getAvailPB, getAvailKayaks, getAvailLifeJackets, getAvailRoofRacks, getUpcomingDue, getPastDue, quickClose, quickEdit, updateCustomerID, openWidgetButton, pastWidgetButton, soonWidgetButton, pendingWidgetButton, quickOpen, testCloser, testOpener })(Dashboard)

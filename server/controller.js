@@ -64,7 +64,7 @@ module.exports = {
         const dbInstance = req.app.get('db');
         const {customer_id, rental_id, paddleboards, kayaks, roofracks, lifejackets} = req.body;
         dbInstance.rentals.assignInventory([customer_id, rental_id, paddleboards, kayaks, roofracks, lifejackets])
-        .then(res.status(200).send('INVENTORY ASSIGNED'))
+        .then(rentals => res.status(200).send(rentals))
         .catch(err => {res.status(500).send()})
     },
 

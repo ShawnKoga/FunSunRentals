@@ -3,6 +3,7 @@
     height: 100vh;
     background-image: url('../../assets/lake-kajak-kayak.jpg');
     background-size: cover;
+    background-position: bottom;
     padding-top: 30px;
     display: flex;
     flex-direction: column;

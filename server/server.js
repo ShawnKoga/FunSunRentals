@@ -1,13 +1,13 @@
 require('dotenv').config();
 
 const express = require('express')
-, bodyParser = require('body-parser')
-, Auth0Strategy = require('passport-auth0')
-, massive = require('massive')
-, session = require('express-session')
-, cors = require('cors')
-, passport = require('passport')
-, request = require('request');
+    , bodyParser = require('body-parser')
+    , Auth0Strategy = require('passport-auth0')
+    , massive = require('massive')
+    , session = require('express-session')
+    , cors = require('cors')
+    , passport = require('passport')
+    , request = require('request');
 
 const app = express();
 const controller = require('./controller')
@@ -38,27 +38,27 @@ passport.use(new Auth0Strategy({
     callbackURL: process.env.AUTH_CALLBACK
 }, function (accessToken, refreshToken, extraParams, profile, done) {
     const db = app.get('db')
-    
+
     db.users.find_user(profile.id).then(user => {
-        if  (user[0]) {
+        if (user[0]) {
             return done(null, user[0]);
         } else {
             db.users.create_user([profile.displayName, profile.emails[0].value, profile.picture, profile.id])
-            .then(user => {
-                return done(null,user[0]);
-            })
+                .then(user => {
+                    return done(null, user[0]);
+                })
         }
     })
 }));
 
 passport.serializeUser(function (user, done) {
     // console.log('serialize', user)
-    done(null,user)
+    done(null, user)
 })
 
 passport.deserializeUser(function (user, done) {
     // console.log('deserialize', user)
-    
+
     // app.get('db').users.find_session_user(user.id).then(user => {
     //     return done(null, user[0]);
     // })
@@ -67,9 +67,9 @@ passport.deserializeUser(function (user, done) {
 
 app.get('/auth/authorized', (req, res) => {
     // console.log('here we are', req.user)
-    if(!req.user) {
+    if (!req.user) {
         // console.log('first statement')
-        return res.send({user: false})
+        return res.send({ user: false })
     } else {
         return res.status(200).send(req.user)
     }
@@ -84,7 +84,7 @@ app.get('/auth/callback', passport.authenticate('auth0', {
 
 app.get('/auth/me', (req, res) => {
     // console.log('start', req.user)
-    if(!req.user) {
+    if (!req.user) {
         // console.log('FAIL', req.user)
         return res.status(404).send('User not found')
     } else {
@@ -125,10 +125,50 @@ app.put('/rentals/close_rental', controller.closeRental)
 
 app.get('/rentals/get_pending_today', controller.getPendingToday)
 
-app.get('*', (req, res)=>{
+//TEST
+app.get('/test/test', (req, resp) => {
+    var inv = {
+        pb: [],
+        kayaks: [],
+        rr: [],
+        jackets: [],
+        dueSoon: [],
+        pastDue: [],
+        openRentals: [],
+        pendingRentals: []
+    }
+    const dbInstance = req.app.get('db');
+    dbInstance.inventory.getAvailPB().then(res => {
+        inv.pb = res[0].count
+        dbInstance.inventory.getAvailKayaks().then(res => {
+            inv.kayaks = res[0].count
+            dbInstance.inventory.getAvailLifeJackets().then(res => {
+                inv.jackets = res[0].count
+                dbInstance.inventory.getAvailRoofRacks().then(res => {
+                    inv.rr = res[0].count
+                    dbInstance.rentals.getUpcomingDue().then(res => {
+                        inv.dueSoon = res
+                        dbInstance.rentals.getPastDue().then(res => {
+                            inv.pastDue = res
+                            dbInstance.rentals.getActiveRentals().then(res => {
+                                inv.openRentals = res
+                                dbInstance.rentals.getPendingRentals().then(res => {
+                                    inv.pendingRentals = res
+                                    resp.status(200).send(inv)
+                                })
+                            })
+                        })
+                    })
+                })
+            })
+        })
+    })
+})
+
+app.get('*', (req, res) => {
     console.log("None Met");
-    res.sendFile(path.join(__dirname, '..','build','index.html'));
-  })
+    res.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
+})
 
 let PORT = 8080;
 app.listen(PORT, () => {

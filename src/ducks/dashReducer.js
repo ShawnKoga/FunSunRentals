@@ -1,4 +1,6 @@
 import * as dashboardService from '../services/dashboardService';
+import axios from 'axios';
+let url = 'http://localhost:8080';
 
 let initialState = {
     activeRentalCount: [],
@@ -31,15 +33,18 @@ const GET_UPCOMING_DUE_FULFILLED = "GET_UPCOMING_DUE_FULFILLED";
 const GET_PAST_DUE = "GET_PAST_DUE";
 const GET_PAST_DUE_FULFILLED = "GET_PAST_DUE_FULFILLED";
 const QUICK_CLOSE = "QUICK_CLOSE";
-const QUICK_CLOSE_FULFILLED = "QUICK_CLOSE";
+const QUICK_CLOSE_FULFILLED = "QUICK_CLOSE_FULFILLED";
 const QUICK_OPEN = "QUICK_OPEN";
-const QUICK_OPEN_FULFILLED = "QUICK_OPEN";
+const QUICK_OPEN_FULFILLED = "QUICK_OPEN_FULFILLED";
 const QUICK_EDIT = "QUICK_EDIT";
 const QUICK_EDIT_FULFILLED = "QUICK_EDIT_FULFILLED";
 const OPEN_WIDGET_BUTTON = "OPEN_WIDGET_BUTTON";
 const PAST_WIDGET_BUTTON = "PAST_WIDGET_BUTTON";
 const SOON_WIDGET_BUTTON = "SOON_WIDGET_BUTTON";
 const PENDING_WIDGET_BUTTON = "PENDING_WIDGET_BUTTON";
+
+const TEST_CLOSER = "TEST_CLOSER";
+const TEST_OPENER = "TEST_OPENER";
 
 //REDUCER
 export default function dashReducer(state = initialState, action) {
@@ -66,13 +71,16 @@ export default function dashReducer(state = initialState, action) {
             return Object.assign({}, state, { currentAvailLifeJackets: action.payload })
 
         case GET_AVAIL_ROOFRACKS_FULFILLED:
+            console.log('case hit')
+            console.log(Object.assign({}, state, { currentAvailRoofRacks: action.payload }))
             return Object.assign({}, state, { currentAvailRoofRacks: action.payload })
 
         case QUICK_CLOSE_FULFILLED:
+            console.log('yatayata', action.payload)
             return Object.assign({}, state, { activeRentalCount: action.payload })
 
         case QUICK_OPEN_FULFILLED:
-            return Object.assign({}, state, {})
+            return Object.assign({}, state, { activeRentalCount: action.payload })
 
         case QUICK_EDIT_FULFILLED:
             console.log('yoyo payload', action.payload)
@@ -90,6 +98,32 @@ export default function dashReducer(state = initialState, action) {
         case PENDING_WIDGET_BUTTON:
             return Object.assign({}, state, { widgetRotate: action.payload })
 
+        case TEST_CLOSER + '_FULFILLED':
+            console.log('hit3', action.payload)
+            var updatedInv = {
+                currentAvailPB: action.payload.pb,
+                currentAvailKayaks: action.payload.kayaks,
+                currentAvailLifeJackets: action.payload.jackets,
+                currentAvailRoofRacks: action.payload.rr,
+                upcomingDueRentals: action.payload.dueSoon,
+                pastDueRentals: action.payload.pastDue
+            }
+            return Object.assign({}, state, updatedInv)
+
+        case TEST_OPENER + '_FULFILLED':
+            console.log('hit3', action.payload)
+            var updatedInv = {
+                currentAvailPB: action.payload.pb,
+                currentAvailKayaks: action.payload.kayaks,
+                currentAvailLifeJackets: action.payload.jackets,
+                currentAvailRoofRacks: action.payload.rr,
+                upcomingDueRentals: action.payload.dueSoon,
+                pastDueRentals: action.payload.pastDue,
+                activeRentalCount: action.payload.openRentals,
+                pendingRentals: action.payload.pendingRentals
+            }
+            return Object.assign({}, state, updatedInv)
+        
         default:
             return state
     }
@@ -146,6 +180,7 @@ export function getAvailLifeJackets() {
 }
 
 export function getAvailRoofRacks() {
+    console.log('awe;ltl')    
     return {
         type: GET_AVAIL_ROOFRACKS,
         payload: dashboardService.getAvailRoofRacks()
@@ -153,9 +188,13 @@ export function getAvailRoofRacks() {
 }
 
 export function quickClose(id) {
+    var runFunctionPlease = dashboardService.quickClose(id).then(res => {
+        console.log('weopfei', res)
+        return res
+    })
     return {
         type: QUICK_CLOSE,
-        payload: dashboardService.quickClose(id)
+        payload: runFunctionPlease,
     }
 }
 
@@ -163,7 +202,7 @@ export function quickOpen(obj) {
     console.log('FIRE AWAY', obj)
     return {
         type: QUICK_OPEN,
-        payload: dashboardService.quickOpen(obj)
+        payload: dashboardService.quickOpen(obj),
     }
 }
 
@@ -199,5 +238,27 @@ export function pendingWidgetButton(click) {
     return {
         type: PENDING_WIDGET_BUTTON,
         payload: click
+    }
+}
+
+export function testCloser() {
+    const inv = axios.get(`${url}/test/test`).then(res => {
+        console.log('hit2', res)
+        return res.data
+    })
+    return {
+        type: TEST_CLOSER,
+        payload: inv
+    }
+}
+
+export function testOpener() {
+    const inv = axios.get(`${url}/test/test`).then(res => {
+        console.log('hit2', res)
+        return res.data
+    })
+    return {
+        type: TEST_OPENER,
+        payload: inv
     }
 }
