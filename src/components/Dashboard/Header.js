@@ -18,6 +18,7 @@ class Header extends Component {
             showRentTools: false,
             showCustTools: false,
             showInventoryTools: false,
+            showEmpTools: false
         }
 
         this.toggleSubMenu = this.toggleSubMenu.bind(this);  
@@ -51,6 +52,11 @@ class Header extends Component {
                 showInventoryTools: !this.state.showInventoryTools
             })
         }
+        else if ( e === 'EMP') {
+            this.setState({
+                showEmpTools: !this.state.showEmpTools
+            })
+        }
     }
 
     render() {
@@ -62,7 +68,8 @@ class Header extends Component {
                     toggleSubMenu={this.toggleSubMenu}
                     showRentTools={this.state.showRentTools}
                     showCustTools={this.state.showCustTools}
-                    showInventoryTools={this.state.showInventoryTools} />
+                    showInventoryTools={this.state.showInventoryTools}
+                    showEmpTools={this.state.showEmpTools} />
 
                 <section className="dash_header">
                     <img src={svg} className="hamburger" onClick={() => this.toggleMenu()} alt="hamburger" />

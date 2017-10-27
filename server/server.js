@@ -41,12 +41,14 @@ passport.use(new Auth0Strategy({
 
     db.users.find_user(profile.id).then(user => {
         if (user[0]) {
+            console.log(user[0])
             return done(null, user[0]);
         } else {
-            db.users.create_user([profile.displayName, profile.emails[0].value, profile.picture, profile.id])
-                .then(user => {
-                    return done(null, user[0]);
-                })
+            // db.users.create_user([profile.displayName, profile.emails[0].value, profile.picture, profile.id])
+            //     .then(user => {
+            //         return done(null, user[0]);
+            //     })
+            return done(null, false)
         }
     })
 }));

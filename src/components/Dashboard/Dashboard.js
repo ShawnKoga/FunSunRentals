@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-// import BigCalendar from 'react-big-calendar';
+import BigCalendar from 'react-big-calendar';
 import Header from './Header';
-// import moment from 'moment';
+import moment from 'moment';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getActiveRentalCount, getPendingRentals, getAvailPB, getAvailKayaks, getAvailLifeJackets, getAvailRoofRacks, getUpcomingDue, getPastDue, quickClose, quickEdit, openWidgetButton, pastWidgetButton, soonWidgetButton, pendingWidgetButton, quickOpen, testCloser, testOpener } from '../../ducks/dashReducer';
@@ -9,7 +9,7 @@ import { updateCustomerID } from '../../ducks/createRentalReducer';
 import axios from 'axios';
 
 import './Dashboard.css';
-// import 'react-big-calendar/lib/css/react-big-calendar.css';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
 
 let url = 'http://localhost:8080';
 
@@ -73,8 +73,8 @@ class Dashboard extends Component {
     }
 
     render() {
-        // BigCalendar.momentLocalizer(moment);
-        // var myEventsList = [];
+        BigCalendar.momentLocalizer(moment);
+        var myEventsList = [];
         console.log('stuff to update', this.props.activeRentalCount)
         const pendingRentalQuickView = this.props.pendingRentals.map((c, i) => {
             var closeObj = { rentalID: c.rental_id }
@@ -257,7 +257,7 @@ class Dashboard extends Component {
                     </container>
                 </section>
 
-                {/* <section className="calendar_container">
+                <section className="calendar_container">
                     <div className="calendar">
                         <BigCalendar
                             views={{ month: true, week: true, day: false, agenda: true }}
@@ -266,7 +266,7 @@ class Dashboard extends Component {
                             endAccessor='endDate'
                         />
                     </div>
-                </section> */}
+                </section>
             </main>
         )
     }

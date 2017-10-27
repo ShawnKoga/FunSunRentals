@@ -264,9 +264,9 @@ export default class Landing extends Component {
                     </a>
 
                     <div className="landing_button_container">
-                        <a href="#about_us" className="landing_header_button">ABOUT US</a>
+                        <a href="#about_us" className="landing_header_button">ABOUT</a>
                         <a href="#request_time" className="landing_header_button">RENT</a>
-                        <a href="#contact" className="landing_header_button">CONTACT US</a>
+                        <a href="#contact" className="landing_header_button">CONTACT</a>
                         <a href={process.env.REACT_APP_LOGIN}><button className="landing_header_button">LOGIN</button></a>
                     </div>
                 </section>

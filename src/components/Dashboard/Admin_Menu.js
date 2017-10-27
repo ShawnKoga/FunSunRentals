@@ -8,7 +8,7 @@ class Admin_Menu extends Component {
         return (
             <div className={"admin_nav_container " + (this.props.showMenu ? 'show' : 'hide')}>
                 <div className="admin_menu_header">
-                    <button className="close_button" onClick={() => this.props.toggleMenu()}>x</button>
+                    <button className="close_button" onClick={() => this.props.toggleMenu()}>{'<<'}</button>
                 </div>
 
                 <div className="admin_nav_link" onClick={() => this.props.toggleSubMenu('RENT')}>RENTALS</div>
@@ -30,7 +30,11 @@ class Admin_Menu extends Component {
                     <li className="home_sub">AVAILABILITY</li>
                     <Link className="home_sub" to="/add_inventory">ADD NEW</Link>
                 </div>
-                {/* <div className="admin_nav_link">EMPLOYEES</div> */}
+
+                <div className="admin_nav_link" onClick={() => this.props.toggleSubMenu('EMP')}>EMPLOYEES</div>
+                <div className={this.props.showEmpTools ? 'show_sub' : 'hide_sub'}>
+                    <li className="home_sub">ADD NEW</li>
+                </div>
             </div>
         )
     }
