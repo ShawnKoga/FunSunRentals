@@ -112,7 +112,7 @@ export default function dashReducer(state = initialState, action) {
 
         case TEST_OPENER + '_FULFILLED':
             console.log('hit3', action.payload)
-            var updatedInv = {
+            var updateInv = {
                 currentAvailPB: action.payload.pb,
                 currentAvailKayaks: action.payload.kayaks,
                 currentAvailLifeJackets: action.payload.jackets,
@@ -122,7 +122,7 @@ export default function dashReducer(state = initialState, action) {
                 activeRentalCount: action.payload.openRentals,
                 pendingRentals: action.payload.pendingRentals
             }
-            return Object.assign({}, state, updatedInv)
+            return Object.assign({}, state, updateInv)
         
         default:
             return state

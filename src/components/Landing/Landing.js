@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './Landing.css';
 import logo from '../../assets/FUTSRArtboard 1.svg';
-import lakeVideo from '../../assets/Lake - 913.mp4';
+// import lakeVideo from '../../assets/Lake - 913.mp4';
 import { SocialIcon } from 'react-social-icons';
 import axios from 'axios';
 // import svg from '../../assets/hamburger.svg';
@@ -278,9 +278,10 @@ export default class Landing extends Component {
                     </div>
 
                     <div className="fullscreen-bg">
-                        <video loop autoPlay className="fullscreen-bg_video" type="video/mp4">
+                        {/* <video loop autoPlay className="fullscreen-bg_video" type="video/mp4">
                             <source src={lakeVideo} type="video/mp4" />
-                        </video>
+                        </video> */}
+                        <iframe src="https://player.vimeo.com/video/240557967?autoplay=1&loop=1" title="lake video" allowFullScreen></iframe>
                     </div>
                 </a>
 
