@@ -14,6 +14,7 @@ const controller = require('./controller')
 
 app.use(bodyParser.json());
 app.use(cors())
+app.use( express.static( `${__dirname}/../build` ) );
 
 app.use(session({
     secret: process.env.SECRET,
@@ -41,7 +42,6 @@ passport.use(new Auth0Strategy({
 
     db.users.find_user(profile.id).then(user => {
         if (user[0]) {
-            console.log(user[0])
             return done(null, user[0]);
         } else {
             // db.users.create_user([profile.displayName, profile.emails[0].value, profile.picture, profile.id])
@@ -77,11 +77,12 @@ app.get('/auth/authorized', (req, res) => {
     }
 });
 
-app.get('/auth', passport.authenticate('auth0'));
+app.get('/auth', (req, res, next) => {
+console.log('this is it'); next()}, passport.authenticate('auth0'));
 
 app.get('/auth/callback', passport.authenticate('auth0', {
-    successRedirect: 'http://localhost:3000/dashboard',
-    failureRedirect: 'http://localhost:3000/'
+    successRedirect: '/dashboard',
+    failureRedirect: '/'
 }));
 
 app.get('/auth/me', (req, res) => {
@@ -97,7 +98,7 @@ app.get('/auth/me', (req, res) => {
 
 app.get('/auth/logout', (req, res) => {
     req.logOut()
-    return res.redirect(302, 'http://localhost:3000/');
+    return res.redirect(302, '/');
 })
 
 
@@ -167,8 +168,10 @@ app.get('/test/test', (req, resp) => {
     })
 })
 
+let path = require('path')
+console.log("Ok?");
 app.get('*', (req, res) => {
-    console.log("None Met");
+    console.log('breaking here')
     res.sendFile(path.join(__dirname, '..', 'build', 'index.html'));
 })
 
